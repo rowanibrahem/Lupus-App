@@ -1,9 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/constants/asset_images.dart';
-import 'package:lupus_app/features/on_boarding/onboarding_view.dart';
+import 'package:lupus_app/features/on_boarding/presentation/views/onboarding_view.dart';
 
 class SplashBody extends StatefulWidget {
   const SplashBody({super.key});
@@ -59,15 +57,13 @@ class _SplashBodyState extends State<SplashBody>
               child: Center(
                 child: Image.asset(
                 AssetImages.logo,
-                  // width: 150,
-                  // height: 150,
+                  width: 200,
+                  height: 200,
                   ),
               ),
              ),
           ),
-          Text(
-          AppText.appName,
-          ),
+          
           ],
           ),
     );
