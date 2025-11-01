@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lupus_app/features/splash_screen/presentation/splash_view.dart';
+import 'package:lupus_app/features/auth/presentation/views/users_view.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class LupusApp extends StatelessWidget {
   const LupusApp({super.key});
@@ -17,6 +18,15 @@ class LupusApp extends StatelessWidget {
           textTheme: GoogleFonts.ibmPlexSansArabicTextTheme(),
           useMaterial3: true,
         ),
+        locale: const Locale('ar'), 
+        supportedLocales: const [
+          Locale('ar'),
+        ],
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         darkTheme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
             seedColor: Colors.deepPurple,
@@ -27,7 +37,7 @@ class LupusApp extends StatelessWidget {
         ),
         // themeMode: themeMode,
         debugShowCheckedModeBanner: false,  
-        home: SplashView(),
+        home: UsersView(),
       ),
     );
   }
