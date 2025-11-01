@@ -9,8 +9,20 @@ class Styles {
       fontWeight: FontWeight.w500, //meduim
     );
   }
- 
-  
+ static TextStyle textStyle16(BuildContext context) {
+    return TextStyle(
+      color: ColorApp.textColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontWeight: FontWeight.w600, //semibold
+    );
+  }
+  static TextStyle textStyle14(BuildContext context) {
+    return TextStyle(
+      color: ColorApp.secondaryColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w400, //regular
+    );
+  }
 }
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   double scaleFactor = getScaleFactor(context);
