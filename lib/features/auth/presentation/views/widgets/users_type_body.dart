@@ -21,6 +21,7 @@ class UsersTypeBody extends StatelessWidget {
             AppText.chooseAccountSubText,
             style: Styles.textStyle14(context),
           ),
+          const Spacer(),
           CustomButton(
             text: AppText.next,
             func: (){},

@@ -29,4 +29,8 @@ class AppText {
   static const chooseAccount = 'اختار نوع حسابك';
   static const chooseAccountSubText =
       'قولنا إنت مين علشان نقدر نساعدك بطريقتنا الخاصة';
+      static const forgetPasswordTitle = 'هل نسيت كلمة المرور ؟';
+      static const personalInfo = 'المعلومات الشخصية';
+      static const medicalInfo = 'المعلومات الطبية';
+      
 }

@@ -5,6 +5,7 @@ import 'package:lupus_app/core/shared_widgets/custom_button.dart';
 import 'package:lupus_app/core/shared_widgets/custom_field.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
 import 'package:lupus_app/core/theme/styles.dart';
+import 'package:lupus_app/features/auth/presentation/views/forget_password_view.dart';
 import 'package:lupus_app/features/auth/presentation/views/users_view.dart';
 import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
 
@@ -89,6 +90,24 @@ class _LoginBodyState extends State<LoginBody> {
               },
             ),
           ),
+           Align(
+            alignment: Alignment.centerLeft,
+             child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ForgetPasswordView()),
+                    );
+                  },
+                  child: Text(
+                    AppText.forgotPassword,
+                    style: Styles.textStyle14(context).copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
+                    ),
+                  ),
+                ),
+           ),
           Spacer(),
           CustomButton(
             text: AppText.loginButton,
