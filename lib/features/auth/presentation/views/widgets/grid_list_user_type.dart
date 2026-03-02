@@ -4,40 +4,34 @@ import 'package:lupus_app/core/constants/asset_icons.dart';
 import 'package:lupus_app/features/auth/data/modals/user_type_modal.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/user_card_item.dart';
 
-class GridListUserType extends StatelessWidget {
-  const GridListUserType({super.key});
-  
+class GridListUserType extends StatefulWidget {
+  const GridListUserType({
+    super.key,
+    required this.selectedIndex,
+    required this.onSelect,
+  });
+  final int selectedIndex;
+  final Function(int) onSelect;
 
   @override
+  State<GridListUserType> createState() => _GridListUserTypeState();
+}
+
+class _GridListUserTypeState extends State<GridListUserType> {
+  int selectedIndex = -1;
+  final List<UserTypeModal> users = [
+    UserTypeModal(text: AppText.patient, icon: AssetIcons.patientIcon),
+    UserTypeModal(text: AppText.doctor, icon: AssetIcons.doctorIcon),
+    UserTypeModal(text: AppText.pharmacy, icon: AssetIcons.pharmacyIcon),
+    UserTypeModal(
+      text: AppText.patientFamily,
+      icon: AssetIcons.patientFamilyicon,
+    ),
+    UserTypeModal(text: AppText.organization, icon: AssetIcons.charityIcon),
+  ];
+  @override
   Widget build(BuildContext context) {
-  List<UserTypeModal> users = [
-  UserTypeModal(
-    text: AppText.patient,
-    icon: AssetIcons.patientIcon,
-    func: () {},
-  ),
-  UserTypeModal(
-    text: AppText.doctor,
-    icon: AssetIcons.doctorIcon,
-    func: () {},
-  ),
-  UserTypeModal(
-    text: AppText.pharmacy,
-    icon: AssetIcons.pharmacyIcon,
-    func: () {},
-  ),
-  UserTypeModal(
-    text: AppText.patientFamily,
-    icon: AssetIcons.patientFamilyicon,
-    func: () {},
-  ),
-  UserTypeModal(
-    text: AppText.organization,
-    icon: AssetIcons.charityIcon,
-    func: () {},
-  ),
-];
-    return  Expanded(
+    return Expanded(
       child: GridView.builder(
         itemCount: users.length,
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -48,11 +42,18 @@ class GridListUserType extends StatelessWidget {
         ),
         itemBuilder: (context, index) {
           final user = users[index];
+
           return UserCardItem(
             text: user.text,
-             icon: user.icon,
-             func: user.func
-             );
+            icon: user.icon,
+            isSelected: selectedIndex == index,
+            func: () {
+              widget.onSelect(index);
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+          );
         },
       ),
     );
