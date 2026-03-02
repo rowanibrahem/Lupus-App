@@ -25,6 +25,7 @@ class AppText {
   static const charity = 'جمعية خيرية';
   static const patientFamily = 'أهل المريض';
   static const pharmacy = 'صيدلية';
+  static const organization =  'مؤسسة';
   static const join = 'انضم الى مجتمعنا';
   static const chooseAccount = 'اختار نوع حسابك';
   static const chooseAccountSubText =

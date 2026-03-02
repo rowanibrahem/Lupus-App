@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/shared_widgets/custom_button.dart';
 import 'package:lupus_app/core/theme/styles.dart';
+import 'package:lupus_app/features/auth/presentation/views/widgets/grid_list_user_type.dart';
 
 class UsersTypeBody extends StatelessWidget {
   const UsersTypeBody({super.key});
@@ -21,7 +22,8 @@ class UsersTypeBody extends StatelessWidget {
             AppText.chooseAccountSubText,
             style: Styles.textStyle14(context),
           ),
-          const Spacer(),
+          GridListUserType(),
+        SizedBox(height: 20),
           CustomButton(
             text: AppText.next,
             func: (){},
