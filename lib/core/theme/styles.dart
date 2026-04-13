@@ -2,28 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
 
 class Styles {
-   static TextStyle textStyle20(BuildContext context) {
+  static TextStyle textStyle20(BuildContext context) {
     return TextStyle(
-      color: ColorApp.textColor,
+      color: AppColors.textColor,
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontWeight: FontWeight.w500, //meduim
     );
   }
- static TextStyle textStyle16(BuildContext context) {
+
+  static TextStyle textStyle16(BuildContext context) {
     return TextStyle(
-      color: ColorApp.textColor,
+      color: AppColors.textColor,
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontWeight: FontWeight.w600, //semibold
     );
   }
+
   static TextStyle textStyle14(BuildContext context) {
     return TextStyle(
-      color: ColorApp.secondaryColor,
+      color: AppColors.secondaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w400, //regular
     );
   }
 }
+
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   double scaleFactor = getScaleFactor(context);
   double responsiveFontSize = scaleFactor * fontSize;
@@ -31,8 +34,6 @@ double getResponsiveFontSize(BuildContext context, {required double fontSize}) {
   double upperLimit = fontSize * 1.2;
   return responsiveFontSize.clamp(lowerLimit, upperLimit);
 }
-
-
 
 double getScaleFactor(BuildContext context) {
   double w = MediaQuery.of(context).size.width;
