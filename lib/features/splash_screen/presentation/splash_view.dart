@@ -10,7 +10,7 @@ class SplashView extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SplashBody(),
-        ),
-        );
+      ),
+    );
   }
 }

@@ -16,25 +16,22 @@ class OnboardingBody extends StatefulWidget {
 class _OnboardingBodyState extends State<OnboardingBody> {
   PageController controller = PageController();
   int currentIndex = 0;
-   
+
   final List<Map<String, String>> onboardingData = [
     {
       "image": AssetImages.onboard1,
       "title": AppText.onBoarding1,
-     
     },
     {
       "image": AssetImages.onboard2,
       "title": AppText.onBoarding2,
-      
     },
     {
       "image": AssetImages.onboard3,
       "title": AppText.onBoarding3,
-      
     },
   ];
-  
+
   void nextPage() {
     if (currentIndex < onboardingData.length - 1) {
       controller.nextPage(
@@ -82,25 +79,25 @@ class _OnboardingBodyState extends State<OnboardingBody> {
                 currentIndex = index;
               });
             },
-            itemBuilder:
-                (context, index) => Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      onboardingData[index]["image"]!,
-                      height: 300,
-                      fit: BoxFit.contain,
-                    ),
-                    const SizedBox(height: 30),
-                    Text(
-                          onboardingData[index]["title"]!,
-                          textAlign: TextAlign.center,
-                          style: Styles.textStyle20(context),
-                        ),
-                  ],
+            itemBuilder: (context, index) => Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  onboardingData[index]["image"]!,
+                  height: 300,
+                  fit: BoxFit.contain,
                 ),
+                const SizedBox(height: 30),
+                Text(
+                  onboardingData[index]["title"]!,
+                  textAlign: TextAlign.center,
+                  style: Styles.textStyle20(context),
+                ),
+              ],
+            ),
           ),
-        ),        Row(
+        ),
+        Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
             onboardingData.length,
@@ -110,20 +107,19 @@ class _OnboardingBodyState extends State<OnboardingBody> {
               height: 8,
               width: currentIndex == index ? 20 : 8,
               decoration: BoxDecoration(
-                color: currentIndex == index ? ColorApp.dots : Colors.grey,
+                color: currentIndex == index ? AppColors.dots : Colors.grey,
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
           ),
         ),
         const SizedBox(height: 30),
-        
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: CustomButton(
             text: currentIndex == onboardingData.length - 1 ? AppText.getStarted : AppText.next,
             func: nextPage,
-            ),
+          ),
         ),
         const SizedBox(height: 30),
       ],
