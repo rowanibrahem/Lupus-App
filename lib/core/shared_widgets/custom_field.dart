@@ -15,9 +15,9 @@ class InputField extends StatelessWidget {
   final FocusNode? focusNode;
   final bool obscureText;
   final Icon? suffix;
-   final List<String>? autofillHints;
-    final IconData? suffixIcon;
-    final Function()? suffixPressed;
+  final List<String>? autofillHints;
+  final IconData? suffixIcon;
+  final Function()? suffixPressed;
   const InputField({
     super.key,
     required this.label,
@@ -34,8 +34,8 @@ class InputField extends StatelessWidget {
     this.focusNode,
     this.autofillHints,
     this.obscureText = false,
-     this.suffixIcon, 
-     this.suffixPressed,
+    this.suffixIcon,
+    this.suffixPressed,
   });
 
   @override
@@ -68,7 +68,7 @@ class InputField extends StatelessWidget {
           borderRadius: BorderRadius.circular(2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: ColorApp.primaryColor),
+          borderSide: const BorderSide(color: AppColors.primaryColor),
           borderRadius: BorderRadius.circular(5),
         ),
       ),
