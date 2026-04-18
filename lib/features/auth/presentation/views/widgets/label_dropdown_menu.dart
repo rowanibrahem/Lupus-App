@@ -16,7 +16,7 @@ class LabelDropdownMenu<T> extends StatelessWidget {
     this.initialSelection,
     this.onSelected,
     this.leadingIcon,
-    this.width,
+    this.width = double.infinity,
   });
 
   @override
@@ -41,6 +41,7 @@ class LabelDropdownMenu<T> extends StatelessWidget {
           leadingIcon: leadingIcon, // Displays the icon on the left
           onSelected: onSelected,
           trailingIcon: const Icon(Icons.keyboard_arrow_down),
+          selectedTrailingIcon: Icon(Icons.keyboard_arrow_up),
           dropdownMenuEntries: dropdownMenuEntries,
           inputDecorationTheme: const InputDecorationTheme(
             filled: true,
