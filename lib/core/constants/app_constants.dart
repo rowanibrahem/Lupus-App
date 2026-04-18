@@ -97,11 +97,11 @@ abstract class AppConstants {
   ];
 
   static const List<String> kinship = [
+    'أخ',
     'أب',
     'أم',
     'ابن',
     'ابنة',
-    'أخ',
     'أخت',
     'زوج',
     'زوجة',
@@ -117,7 +117,10 @@ abstract class AppConstants {
     'ابنة خال',
     'قريب آخر',
   ];
-  static final List<int> ages = List<int>.generate(85, (index) => index + 1);
+  static final List<int> ages = List<int>.generate(
+    75 - 10 + 1,
+    (index) => index + 10,
+  );
   static const List<String> specializations = [
     'روماتيزم',
     'باطنة عامة',

@@ -36,7 +36,7 @@ class LabelTextFormField extends StatelessWidget {
           textAlign: TextAlign.right,
           style: const TextStyle(
             color: AppColors.blackColor,
-            fontWeight: FontWeight.w700,
+            fontWeight: FontWeight.w600,
             fontSize: 12,
             height: 1.0,
             letterSpacing: 0.0,
