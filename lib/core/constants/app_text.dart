@@ -1,11 +1,8 @@
 class AppText {
   static const String appName = 'لأنك مش لوحدك في الرحلة';
-  static const onBoarding1 =
-      'عارف يعني ايه تعيش مع الذئبة ؟ أحنا هنا علشان نسهلها عليك ، خطوة بخطوة ، من غير توتر و لا تعب';
-  static const onBoarding2 =
-      'سجّل يومك، مشاعرك، الأعراض اللي حاسس بيها، وخلّي التطبيق يساعدك تتابع حالتك وتفهم  جسمك اكتر';
-  static const onBoarding3 =
-      'هنفكرك بمواعيد ادويتك و نساعدك ترتب كل حاجة من غير ما تتعب دماغك ';
+  static const onBoarding1 = 'عارف يعني ايه تعيش مع الذئبة ؟ أحنا هنا علشان نسهلها عليك ، خطوة بخطوة ، من غير توتر و لا تعب';
+  static const onBoarding2 = 'سجّل يومك، مشاعرك، الأعراض اللي حاسس بيها، وخلّي التطبيق يساعدك تتابع حالتك وتفهم  جسمك اكتر';
+  static const onBoarding3 = 'هنفكرك بمواعيد ادويتك و نساعدك ترتب كل حاجة من غير ما تتعب دماغك ';
   static const skip = 'تخطى';
   static const next = 'التالى';
   static const getStarted = 'ابدأ الأن';
@@ -25,13 +22,53 @@ class AppText {
   static const charity = 'جمعية خيرية';
   static const patientFamily = 'أهل المريض';
   static const pharmacy = 'صيدلية';
-  static const organization =  'مؤسسة';
+  static const organization = 'مؤسسة';
   static const join = 'انضم الى مجتمعنا';
   static const chooseAccount = 'اختار نوع حسابك';
-  static const chooseAccountSubText =
-      'قولنا إنت مين علشان نقدر نساعدك بطريقتنا الخاصة';
-      static const forgetPasswordTitle = 'هل نسيت كلمة المرور ؟';
-      static const personalInfo = 'المعلومات الشخصية';
-      static const medicalInfo = 'المعلومات الطبية';
-      
+  static const chooseAccountSubText = 'قولنا إنت مين علشان نقدر نساعدك بطريقتنا الخاصة';
+  static const forgetPasswordTitle = 'هل نسيت كلمة المرور ؟';
+  static const personalInfo = 'المعلومات الشخصية';
+  static const medicalInfo = 'المعلومات الطبية';
+
+//!----------------------------------------------
+  static const patientFamilyTitle = 'إنشاء حساب (أهل المريض)';
+  static const patientName = 'أسم المريض';
+  static const enterPatientName = 'أدخل الأسم';
+  static const phoneNumber = 'رقم الهاتف';
+  static const enterPhoneNumber = 'أدخل رقم الهاتف';
+  static const email = 'البريد الألكتروني';
+  static const enterEmail = 'أدخل البريد الألكتروني';
+  static const password = 'كلمة المرور';
+  static const enterPassword = 'أدخل كلمة المرور';
+  static const kinship = 'صلة القرابة';
+  static const age = 'السن';
+  static const country = 'الدولة';
+  static const city = 'المدينة';
+  static const confirm = 'تأكيد';
+  static const male = 'ذكر';
+  static const pharmacySignupTitle = 'إنشاء حساب (صيدلية)';
+  static const contactNumber = 'رقم للتواصل';
+  static const enterContactNumber = '***********';
+  static const address = 'العنوان';
+  static const enterAddress = 'طنطا - حي ثاني';
+  static const pharmacyName = 'أسم الصيدلة';
+  static const organizationSignupTitle = 'إنشاء حساب (مؤسسة)';
+  static const organizationName = 'اسم المؤسسة';
+  static const fieldOfWork = 'مجال العمل';
+  static const addLink = 'أضف الرابط';
+  static const websiteOrFacebookLink = 'رابط الموقع/الفيسبوك';
+  static const doctorSignupTitle = 'إنشاء حساب (طبيب)';
+  static const doctorName = 'اسم الطبيب';
+  static const doctorNameHint = 'أدخل اسم الطبيب';
+  static const birthDate = 'تاريخ الميلاد';
+  static const birthDateHint = '****/**/**';
+  static const page1Of2 = '1 من 2 صفحة';
+  static const page2Of2 = '2 من 2 صفحة';
+  static const continueText = 'متابعة';
 }
+/*
+
+ "1 من 2 صفحة"
+ 2 من 2 صفحة
+ ("متابعه
+ */

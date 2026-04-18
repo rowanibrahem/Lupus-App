@@ -10,6 +10,13 @@ class BottomNavBarView extends StatefulWidget {
 class _BottomNavBarViewState extends State<BottomNavBarView> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "Bottom_NavBarView",
+          style: Theme.of(context).textTheme.headlineMedium,
+        ),
+      ),
+    );
   }
 }
