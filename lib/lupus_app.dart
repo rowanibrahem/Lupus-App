@@ -4,7 +4,7 @@ import 'package:lupus_app/core/services/app_router.dart';
 import 'package:lupus_app/core/services/navigation_service.dart';
 import 'package:lupus_app/core/theme/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lupus_app/features/auth/presentation/views/patient_member_signup/patient_member_signup_view.dart';
+import 'package:lupus_app/features/auth/presentation/views/doctor_signup/doctor_signup_step1_view.dart';
 
 class LupusApp extends StatelessWidget {
   const LupusApp({super.key});
@@ -30,7 +30,7 @@ class LupusApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.generateRoute,
         navigatorKey: NavigationService.navigatorKey,
-        home: PatientMemberSignupView(),
+        home: DoctorSignupStep1View(),
       ),
     );
   }

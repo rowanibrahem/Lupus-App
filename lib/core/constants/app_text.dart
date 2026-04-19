@@ -65,10 +65,19 @@ class AppText {
   static const page1Of2 = '1 من 2 صفحة';
   static const page2Of2 = '2 من 2 صفحة';
   static const continueText = 'متابعة';
+  static const specialization = 'التخصص الرئيسي';
+  static const academicDegree = 'الدرجة العلمية';
+  static const experienceYears = 'سنوات الخبرة';
+  static const availability = 'متاح للاستشارات';
+  static const consultationType = 'نوع الاستشارة';
+  static const workPlace = 'مكان العمل الحالي';
+  static const workingHours = 'مواعيد العمل المتاحة';
+  static const workingHoursHint = 'مواعيد عملك المتاحة';
+  static const fees = 'الرسوم';
+  static const feesHint = 'أضف الرسوم';
+  static const bio = 'سيرة مختصرة';
+  static const bioHint = 'سيرتك الذاتية';
 }
 /*
 
- "1 من 2 صفحة"
- 2 من 2 صفحة
- ("متابعه
  */
