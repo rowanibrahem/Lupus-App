@@ -90,7 +90,12 @@ class PatientMemberSignupView extends StatelessWidget {
                             builder: (context, value, _) {
                               return LabelDropdownMenu<String>(
                                 label: AppText.country,
-                                leadingIcon: value == null ? null : CountryFlag.fromCountryCode(AppConstants.getCountryCode(value), width: 24, height: 24),
+                                leadingIcon: value == null
+                                    ? null
+                                    : Padding(
+                                        padding: const EdgeInsets.all(12),
+                                        child: CountryFlag.fromCountryCode(AppConstants.getCountryCode(value), width: 24, height: 24),
+                                      ),
                                 initialSelection: value,
                                 onSelected: (newValue) => selectedCountry.value = newValue,
                                 dropdownMenuEntries: AppConstants.countries
