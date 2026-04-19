@@ -10,8 +10,9 @@ class LabelTextFormField extends StatelessWidget {
   final bool obscureText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
-
   final void Function(String)? onChanged;
+  final VoidCallback? onTap;
+  final bool readOnly;
 
   const LabelTextFormField({
     super.key,
@@ -24,6 +25,8 @@ class LabelTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.onChanged,
+    this.onTap,
+    this.readOnly = false,
   });
 
   @override
@@ -49,12 +52,14 @@ class LabelTextFormField extends StatelessWidget {
           keyboardType: keyboardType,
           obscureText: obscureText,
           onChanged: onChanged,
+          readOnly: readOnly,
+          onTap: onTap,
           decoration: InputDecoration(
             hintText: hintText,
             suffixIcon: suffixIcon,
             prefixIcon: prefixIcon,
           ),
-        )
+        ),
       ],
     );
   }

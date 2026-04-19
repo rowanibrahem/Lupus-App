@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/theme/styles.dart';
 
 class AlreadyHaveAccountText extends StatelessWidget {
   final VoidCallback? onTap;
@@ -10,22 +12,17 @@ class AlreadyHaveAccountText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text.rich(
       TextSpan(
-        style: const TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-          height: 1.0,
-          letterSpacing: 0.0,
-        ),
+        style: Styles.text12W500(context),
         children: [
           TextSpan(
-            text: 'عندك حساب بالفعل؟ ',
+            text: AppText.alreadyHaveAccountPrompt,
             style: TextStyle(color: AppColors.blackColor),
           ),
           WidgetSpan(
             child: GestureDetector(
               onTap: onTap,
               child: Text(
-                'سجّل دخول',
+                AppText.loginNow,
                 style: TextStyle(color: AppColors.primaryColor),
               ),
             ),

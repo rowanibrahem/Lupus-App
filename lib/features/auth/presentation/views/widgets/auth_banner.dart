@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/constants/asset_images.dart';
+import 'package:lupus_app/core/theme/styles.dart';
 
 class AuthBanner extends StatelessWidget {
   final String title;
@@ -17,7 +18,7 @@ class AuthBanner extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Image.asset(
-          "assets/images/lupus_carve_loge.png",
+          AssetImages.lupusCarveLoge,
           width: size.width,
           height: size.height * 0.33,
           fit: BoxFit.cover,
@@ -25,14 +26,8 @@ class AuthBanner extends StatelessWidget {
         const SizedBox(height: 42),
         Text(
           title,
-          style: TextStyle(
-            color: AppColors.blackColor,
-            fontWeight: FontWeight.w700,
-            fontSize: 20,
-            height: 1.0,
-            letterSpacing: 0.0,
-          ),
-        ),
+          style: Styles.text20BlackW700(context),
+        )
       ],
     );
   }
