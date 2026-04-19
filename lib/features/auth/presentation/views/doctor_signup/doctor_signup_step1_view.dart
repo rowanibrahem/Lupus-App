@@ -2,7 +2,7 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
-import 'package:lupus_app/features/auth/presentation/views/doctor_signup/doctor_signup_step2_view.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/auth_banner.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_text_form_field.dart';
@@ -102,11 +102,7 @@ class DoctorSignupStep1View extends StatelessWidget {
                           StepIndicator(stepText: AppText.page1Of2),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => DoctorSignupStep2View(),
-                                ),
-                              );
+                              Navigator.of(context).pushNamed(Routes.doctorRegisterStep2);
                             },
                             child: Text(AppText.continueText),
                           ),

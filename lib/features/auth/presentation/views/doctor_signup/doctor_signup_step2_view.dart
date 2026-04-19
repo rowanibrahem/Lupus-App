@@ -3,12 +3,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/constants/asset_images.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/theme/styles.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/already_have_account_text.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_text_form_field.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/step_indicator.dart';
-import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
 
 class DoctorSignupStep2View extends StatelessWidget {
   const DoctorSignupStep2View({super.key});
@@ -39,13 +40,7 @@ class DoctorSignupStep2View extends StatelessWidget {
             children: [
               Text(
                 AppText.doctorSignupTitle,
-                style: TextStyle(
-                  color: AppColors.blackColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  height: 1.0,
-                  letterSpacing: 0.0,
-                ),
+                style: Styles.text20BlackW700(context),
               ),
               Form(
                 child: Padding(
@@ -155,11 +150,7 @@ class DoctorSignupStep2View extends StatelessWidget {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => const BottomNavBarView(),
-                                ),
-                              );
+                              Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar);
                             },
                             child: const Text(AppText.confirm),
                           ),

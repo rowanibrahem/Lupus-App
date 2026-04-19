@@ -77,7 +77,32 @@ class AppText {
   static const feesHint = 'أضف الرسوم';
   static const bio = 'سيرة مختصرة';
   static const bioHint = 'سيرتك الذاتية';
+  static const patientSignupTitle = 'إنشاء حساب (مريض)';
+  static const gender = 'النوع';
+  static const female = 'أنثى';
+  static const currentMedications = 'الأدوية الحالية';
+  static const enterMedications = 'اكتب أدويتك';
+  static const dose = 'الجرعة';
+  static const frequency = 'عدد المرات';
+  static const diagnosisDate = 'تاريخ التشخيص';
+  static const dateHint = 'اختر التاريخ';
+  static const lupusType = 'نوع الذئبة الحمراء';
+  static const completeProfile = 'استكمال البيانات';
+  static const symptoms = 'أعراض بتعاني منها';
+  static const enterSymptoms = 'اكتب الأعراض';
+  static const otherDiseases = 'أمراض إضافية بتعاني منها';
+  static const enterOtherDiseases = 'اكتب الأمراض الإضافية';
+  static const drugAllergies = 'هل عندك حساسية من أدوية معينة؟';
+  static const enterDrugAllergies = 'اكتب التفاصيل';
+  static const specialNeeds = 'هل عندك احتياجات خاصة لازم نعرفها؟';
+  static const enterSpecialNeeds = 'اكتب احتياجاتك';
+  static const uploadReports = 'هل ممكن ترفق تحاليلك؟';
+  static const addLinkOrUpload = 'أضف رابط أو ارفع الملفات';
+  static const alreadyHaveAccountPrompt = 'عندك حساب بالفعل؟ ';
+  static const loginNow = 'سجّل دخول';
 }
+
 /*
+
 
  */

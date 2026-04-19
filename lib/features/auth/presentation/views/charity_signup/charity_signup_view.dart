@@ -3,11 +3,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/constants/asset_images.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/already_have_account_text.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/auth_banner.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_text_form_field.dart';
-import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
 
 class CharitySignupView extends StatelessWidget {
   const CharitySignupView({super.key});
@@ -77,9 +77,7 @@ class CharitySignupView extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => BottomNavBarView()),
-                            );
+                            Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar);
                           },
                           child: Text(AppText.confirm),
                         ),

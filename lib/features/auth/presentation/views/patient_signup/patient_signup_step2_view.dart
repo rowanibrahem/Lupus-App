@@ -1,209 +1,136 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lupus_app/core/constants/app_constants.dart';
+import 'package:lupus_app/core/constants/app_text.dart';
+import 'package:lupus_app/core/constants/asset_images.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
-import 'package:lupus_app/features/auth/presentation/views/patient_signup/patient_signup_step3_view.dart';
+import 'package:lupus_app/core/theme/styles.dart';
+import 'package:lupus_app/features/auth/presentation/views/widgets/already_have_account_text.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_text_form_field.dart';
+import 'package:lupus_app/features/auth/presentation/views/widgets/step_indicator.dart';
 
-class Country {
-  final String name;
-  final String flag; // emoji or image asset
-
-  Country({required this.name, required this.flag});
-}
-
-class PatientSignupStep2View extends StatefulWidget {
+class PatientSignupStep2View extends StatelessWidget {
   const PatientSignupStep2View({super.key});
 
   @override
-  State<PatientSignupStep2View> createState() => _PatientSignupStep2ViewState();
-}
-
-class _PatientSignupStep2ViewState extends State<PatientSignupStep2View> {
-  //!------------------------------------------------------------------------
-  final List<String> doses = [
-    '250 Mg',
-    '500 Mg',
-    '750 Mg',
-    '1000 Mg',
-  ];
-
-  String? selectedDose = "500 Mg";
-  final List<String> frequencyOptions = [
-    "مرة واحدة يومياً",
-    "مرتان يومياً",
-    "3 مرات يومياً",
-    "4 مرات يومياً",
-    "عند اللزوم",
-  ];
-
-  String? selectedFrequency = "3 مرات يومياً";
-
-  final List<String> lupusTypes = [
-    "الذئبة الحمامية المجموعية (SLE)",
-    "الذئبة الحمامية الجلدية",
-    "الذئبة الناتجة عن الأدوية",
-    "الذئبة الوليدية",
-  ];
-
-  String? selectedLupusType = "الذئبة الوليدية";
-  //!------------------------------------------------------------------------
-
-  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final selectedDose = ValueNotifier<String?>(AppConstants.doses.first);
+    final selectedFrequency = ValueNotifier<String?>(AppConstants.frequencyOptions.first);
+    final selectedLupusType = ValueNotifier<String?>(AppConstants.lupusTypes.first);
+    final diagnosisDateController = TextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(12),
-              child: SvgPicture.asset("assets/icons/arrow_left.svg"),
-            )),
+          onTap: () => Navigator.pop(context),
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset(AssetImages.arrowLeft),
+          ),
+        ),
       ),
       body: SafeArea(
-        child: Form(
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: CustomScrollView(
-              slivers: [
-                SliverFillRemaining(
-                  hasScrollBody: false, // Allows the content to determine size
+        child: SingleChildScrollView(
+          child: Column(
+            spacing: 16,
+            children: [
+              Text(
+                AppText.patientSignupTitle,
+                style: Styles.text20BlackW700(context),
+              ),
+              Form(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
                   child: Column(
+                    spacing: 18,
                     children: [
-                      // --- Top Section: Inputs ---
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        spacing: 18,
+                      LabelTextFormField(label: AppText.currentMedications, hintText: AppText.enterMedications),
+                      Row(
                         children: [
-                          Center(
-                            child: Text(
-                              "إنشاء حساب (مريض)",
-                              style: TextStyle(
-                                color: AppColors.blackColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                              ),
+                          Expanded(
+                            child: ValueListenableBuilder<String?>(
+                              valueListenable: selectedDose,
+                              builder: (context, value, _) {
+                                return LabelDropdownMenu<String>(
+                                  label: AppText.dose,
+                                  initialSelection: value,
+                                  onSelected: (v) => selectedDose.value = v,
+                                  dropdownMenuEntries: AppConstants.doses.map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
+                                );
+                              },
                             ),
                           ),
-                          LabelTextFormField(
-                            label: "الأدوية الحالية",
-                            hintText: "أكتب ادويتك",
-                          ),
-                          Row(
-                            spacing: 20,
-                            children: [
-                              Expanded(
-                                child: LabelDropdownMenu<String>(
-                                  label: "الجرعة",
-                                  initialSelection: selectedDose,
-                                  onSelected: (value) => setState(() => selectedDose = value),
-                                  dropdownMenuEntries: doses.map((dose) => DropdownMenuEntry(value: dose, label: dose)).toList(),
-                                ),
-                              ),
-                              Expanded(
-                                child: LabelDropdownMenu<String>(
-                                  label: "عدد المرات",
-                                  initialSelection: selectedFrequency,
-                                  onSelected: (value) => setState(() => selectedFrequency = value),
-                                  dropdownMenuEntries: frequencyOptions.map((freq) => DropdownMenuEntry(value: freq, label: freq)).toList(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          LabelTextFormField(
-                            label: "تاريخ التشخيص",
-                            hintText: "****/**/**",
-                            prefixIcon: Padding(
-                              padding: const EdgeInsets.all(12),
-                              child: SvgPicture.asset("assets/icons/calendar.svg"),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: ValueListenableBuilder<String?>(
+                              valueListenable: selectedFrequency,
+                              builder: (context, value, _) {
+                                return LabelDropdownMenu<String>(
+                                  label: AppText.frequency,
+                                  initialSelection: value,
+                                  onSelected: (v) => selectedFrequency.value = v,
+                                  dropdownMenuEntries: AppConstants.frequencyOptions.map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
+                                );
+                              },
                             ),
-                          ),
-                          LabelDropdownMenu<String>(
-                            label: "نوع الذئبة الحمراء",
-                            width: MediaQuery.of(context).size.width - 32, // Ensures it takes full width
-                            initialSelection: selectedLupusType,
-                            onSelected: (value) => setState(() => selectedLupusType = value),
-                            dropdownMenuEntries: lupusTypes.map((type) => DropdownMenuEntry(value: type, label: type)).toList(),
                           ),
                         ],
                       ),
+                      LabelTextFormField(
+                        label: AppText.diagnosisDate,
+                        hintText: AppText.dateHint,
+                        controller: diagnosisDateController,
+                        readOnly: true,
+                        suffixIcon: const Icon(Icons.calendar_today),
+                        onTap: () async {
+                          final pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime.now(),
+                          );
 
-                      // --- Flexible Space ---
-                      const Spacer(flex: 2),
+                          if (pickedDate != null) {
+                            diagnosisDateController.text = "${pickedDate.year}/${pickedDate.month}/${pickedDate.day}";
+                          }
+                        },
+                      ),
+                      ValueListenableBuilder<String?>(
+                        valueListenable: selectedLupusType,
+                        builder: (context, value, _) {
+                          return LabelDropdownMenu<String>(
+                            label: AppText.lupusType,
+                            initialSelection: value,
+                            onSelected: (v) => selectedLupusType.value = v,
+                            dropdownMenuEntries: AppConstants.lupusTypes.map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
+                          );
+                        },
+                      ),
                       const SizedBox(height: 24),
-
-                      // --- Bottom Section: Buttons & Progress ---
-                      Column(
-                        spacing: 12,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                children: [
-                                  // Progress bar stacks
-                                  Stack(
-                                    children: [
-                                      Container(
-                                        height: 8,
-                                        width: 80,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          color: AppColors.primaryColor.withOpacity(0.2),
-                                        ),
-                                      ),
-                                      Container(
-                                        height: 8,
-                                        width: 80, // Set width for full progress on step 2
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(10),
-                                          color: AppColors.primaryColor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 8),
-                                  const Text(
-                                    "2 من 2 صفحة",
-                                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 10),
-                                  )
-                                ],
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: const Color(0x3D000000),
-                                      offset: const Offset(0, 2),
-                                      blurRadius: 7,
-                                      spreadRadius: 0,
-                                    ),
-                                  ],
-                                ),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    Navigator.of(context).push(
-                                      MaterialPageRoute(
-                                        builder: (context) => PatientSignupStep3View(),
-                                      ),
-                                    );
-                                  },
-                                  child: const Text("تأكيد"),
-                                ),
-                              ),
-                            ],
+                          StepIndicator(
+                            stepText: AppText.page2Of2,
+                            latestStep: true,
                           ),
-                          const Text("عندك حساب بالفعل؟ سجّل دخول"),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(Routes.patientRegisterStep3);
+                            },
+                            child: const Text(AppText.continueText),
+                          ),
                         ],
                       ),
+                      const AlreadyHaveAccountText(),
+                      const SizedBox(height: 16),
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

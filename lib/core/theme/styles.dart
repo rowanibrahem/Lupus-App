@@ -25,6 +25,40 @@ class Styles {
       fontWeight: FontWeight.w400, //regular
     );
   }
+
+  static TextStyle text12Gray(BuildContext context) {
+    return TextStyle(
+      color: Colors.grey.shade600,
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+    );
+  }
+
+  static TextStyle text16BlackW700(BuildContext context) {
+    return TextStyle(
+      color: AppColors.blackColor,
+      fontWeight: FontWeight.w700,
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+    );
+  }
+
+  static TextStyle text20BlackW700(BuildContext context) {
+    return TextStyle(
+      color: AppColors.blackColor,
+      fontWeight: FontWeight.w700,
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      height: 1.0,
+      letterSpacing: 0.0,
+    );
+  }
+
+  static TextStyle text12W500(BuildContext context) {
+    return TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: getResponsiveFontSize(context, fontSize: 12),
+      height: 1.0,
+      letterSpacing: 0.0,
+    );
+  }
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

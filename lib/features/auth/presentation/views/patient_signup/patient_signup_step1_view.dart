@@ -1,286 +1,163 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/constants/app_constants.dart';
+import 'package:lupus_app/core/constants/app_text.dart';
+import 'package:lupus_app/core/services/routes.dart';
+import 'package:lupus_app/features/auth/presentation/views/widgets/auth_banner.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_text_form_field.dart';
-import 'package:lupus_app/features/auth/presentation/views/patient_signup/patient_signup_step2_view.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_radio_button.dart';
+import 'package:lupus_app/features/auth/presentation/views/widgets/step_indicator.dart';
 
-class Country {
-  final String name;
-  final String flag; // emoji or image asset
-
-  Country({required this.name, required this.flag});
-}
-
-// PatientBasicInfoView | PatientMedicalInfoView
-class PatientSignupStep1View extends StatefulWidget {
+class PatientSignupStep1View extends StatelessWidget {
   const PatientSignupStep1View({super.key});
 
   @override
-  State<PatientSignupStep1View> createState() => _PatientSignupStep1ViewState();
-}
-
-class _PatientSignupStep1ViewState extends State<PatientSignupStep1View> {
-  //!------------------------------------------------------------------------
-  final List<Country> countries = [
-    Country(name: 'Egypt', flag: '🇪🇬'),
-    Country(name: 'Saudi Arabia', flag: '🇸🇦'),
-    Country(name: 'UAE', flag: '🇦🇪'),
-    Country(name: 'Qatar', flag: '🇶🇦'),
-  ];
-  String selectedCountry = 'Egypt';
-  String selectedGender = "ذكر";
-  //!------------------------------------------------------------------------
-  final List<String> citiesList = ["القاهرة", "الإسكندرية", "الجيزة", "المنصورة", "أسوان", "الأقصر"];
-
-// The state variable that holds the current choice
-// Initializing it with the first item, or leave it null for a hint
-  String? selectedCity = "القاهرة";
-
-  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final selectedCountry = ValueNotifier<String?>(AppConstants.countries.first.name);
+    final selectedCity = ValueNotifier<String?>(AppConstants.citiesList.first);
+    final selectedGender = ValueNotifier<String?>(AppText.male);
+    final isObscure = ValueNotifier<bool>(true);
+    final TextEditingController birthDateController = TextEditingController();
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset(
-                "assets/images/lupus_carve_loge.png",
-                width: size.width,
-                height: size.height * 0.33,
-                fit: BoxFit.cover,
-              ),
-              SizedBox(height: 48),
-              Text(
-                "إنشاء حساب (مريض)",
-                style: TextStyle(
-                  color: AppColors.blackColor,
-                  fontWeight: FontWeight.w700,
-                  fontSize: 20,
-                  height: 1.0,
-                  letterSpacing: 0.0,
-                ),
-              ),
-              SizedBox(height: 16),
+              AuthBanner(title: AppText.patientSignupTitle),
+              const SizedBox(height: 16),
               Form(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     spacing: 18,
                     children: [
-                      //!Todo: Download icons
-                      LabelTextFormField(
-                        label: "الأسم",
-                        hintText: "أدخل الأسم",
-                        /* controller: ,
-                        validator: ,
-                        keyboardType: ,
-                        obscureText: ,
-                        suffixIcon: ,
-                        onChanged: ,*/
+                      LabelTextFormField(label: AppText.patientName, hintText: AppText.enterPatientName),
+                      LabelTextFormField(label: AppText.phoneNumber, hintText: AppText.enterPhoneNumber),
+                      LabelTextFormField(label: AppText.email, hintText: AppText.enterEmail),
+                      ValueListenableBuilder<bool>(
+                        valueListenable: isObscure,
+                        builder: (context, value, _) {
+                          return LabelTextFormField(
+                            label: AppText.password,
+                            hintText: AppText.enterPassword,
+                            obscureText: value,
+                            suffixIcon: GestureDetector(
+                              onTap: () => isObscure.value = !isObscure.value,
+                              child: Padding(
+                                padding: const EdgeInsets.all(12),
+                                child: Icon(
+                                  value ? Icons.visibility_off : Icons.visibility,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
+                      LabelTextFormField(label: AppText.birthDate, hintText: AppText.birthDateHint),
                       LabelTextFormField(
-                        label: "رقم الهاتف",
-                        hintText: "أدخل رقم الهاتف",
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset("assets/icons/smart-phone-01.svg"),
-                        ),
-                        /* controller: ,
-                        validator: ,
-                        keyboardType: ,
-                        onChanged: ,*/
-                      ),
-                      LabelTextFormField(
-                        label: "البريد الألكتروني",
-                        hintText: "أدخل البريد الألكتروني",
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset("assets/icons/email.svg"),
-                        ),
+                        label: AppText.birthDate,
+                        hintText: AppText.birthDateHint,
+                        controller: birthDateController,
+                        readOnly: true,
+                        onTap: () async {
+                          final pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime(2000),
+                            firstDate: DateTime(1950),
+                            lastDate: DateTime.now(),
+                          );
 
-                        /* controller: ,
-                        validator: ,
-                        keyboardType: ,
-                        obscureText: ,
-                        suffixIcon: ,
-                        onChanged: ,*/
-                      ),
-                      LabelTextFormField(
-                        label: "كلمة المرور",
-                        hintText: "أدخل كلمة المرور",
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset("assets/icons/lock.svg"),
-                        ),
-                        suffixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset("assets/icons/eye.svg"),
-                        ),
-
-                        /* controller: ,
-                        validator: ,
-                        keyboardType: ,
-                        obscureText: ,
-                        suffixIcon: ,
-                        onChanged: ,*/
-                      ),
-                      LabelTextFormField(
-                        label: "تاريخ الميلاد",
-                        hintText: "****/**/**",
-                        prefixIcon: Padding(
-                          padding: const EdgeInsets.all(12),
-                          child: SvgPicture.asset("assets/icons/calendar.svg"),
-                        ),
-
-                        /* controller: ,
-                        validator: ,
-                        keyboardType: ,
-                        obscureText: ,
-                        suffixIcon: ,
-                        onChanged: ,*/
+                          if (pickedDate != null) {
+                            birthDateController.text = "${pickedDate.year}/${pickedDate.month}/${pickedDate.day}";
+                          }
+                        },
                       ),
                       Row(
-                        spacing: 42,
                         children: [
                           Expanded(
-                            //country_state_picker
-                            child: LabelDropdownMenu<String>(
-                              label: "الدولة",
-                              initialSelection: selectedCountry,
-                              onSelected: (value) {
-                                if (value != null) {
-                                  setState(() => selectedCountry = value);
-                                }
-                              },
-                              dropdownMenuEntries: countries.map((country) {
-                                return DropdownMenuEntry<String>(
-                                  value: country.name,
-                                  label: country.name,
+                            child: ValueListenableBuilder<String?>(
+                              valueListenable: selectedCountry,
+                              builder: (context, value, _) {
+                                return LabelDropdownMenu<String>(
+                                  label: AppText.country,
+                                  initialSelection: value,
+                                  onSelected: (v) => selectedCountry.value = v,
+                                  dropdownMenuEntries: AppConstants.countries.map((c) => DropdownMenuEntry(value: c.name, label: c.name)).toList(),
                                 );
-                              }).toList(),
+                              },
                             ),
                           ),
+                          const SizedBox(width: 16),
                           Expanded(
-                            child: LabelDropdownMenu<String>(
-                              label: "المدينة",
-                              initialSelection: selectedCity,
-                              onSelected: (value) {
-                                if (value != null) {
-                                  setState(() => selectedCity = value);
-                                }
-                              },
-                              dropdownMenuEntries: citiesList.map((city) {
-                                return DropdownMenuEntry<String>(
-                                  value: city,
-                                  label: city,
+                            child: ValueListenableBuilder<String?>(
+                              valueListenable: selectedCity,
+                              builder: (context, value, _) {
+                                return LabelDropdownMenu<String>(
+                                  label: AppText.city,
+                                  initialSelection: value,
+                                  onSelected: (v) => selectedCity.value = v,
+                                  dropdownMenuEntries: AppConstants.citiesList.map((c) => DropdownMenuEntry(value: c, label: c)).toList(),
                                 );
-                              }).toList(),
+                              },
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "النوع",
-                            textAlign: TextAlign.right,
-                            style: TextStyle(
-                              color: AppColors.blackColor,
+                            AppText.gender,
+                            style: const TextStyle(
                               fontWeight: FontWeight.w700,
                               fontSize: 12,
-                              height: 1.0,
-                              letterSpacing: 0.0,
                             ),
                           ),
                           Row(
                             children: [
                               Expanded(
-                                child: LabelRadioButton<String>(
-                                  label: "ذكر",
-                                  value: "ذكر",
-                                  groupValue: selectedGender,
-                                  onChanged: (val) {
-                                    if (val != null) setState(() => selectedGender = val);
+                                child: ValueListenableBuilder<String?>(
+                                  valueListenable: selectedGender,
+                                  builder: (context, value, _) {
+                                    return LabelRadioButton<String>(
+                                      label: AppText.male,
+                                      value: AppText.male,
+                                      groupValue: value,
+                                      onChanged: (v) => selectedGender.value = v,
+                                    );
                                   },
                                 ),
                               ),
                               Expanded(
-                                child: LabelRadioButton<String>(
-                                  label: "أنثى",
-                                  value: "أنثى",
-                                  groupValue: selectedGender,
-                                  onChanged: (val) {
-                                    if (val != null) setState(() => selectedGender = val);
+                                child: ValueListenableBuilder<String?>(
+                                  valueListenable: selectedGender,
+                                  builder: (context, value, _) {
+                                    return LabelRadioButton<String>(
+                                      label: AppText.female,
+                                      value: AppText.female,
+                                      groupValue: value,
+                                      onChanged: (v) => selectedGender.value = v,
+                                    );
                                   },
                                 ),
                               ),
                             ],
-                          )
+                          ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            children: [
-                              Stack(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 48),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.lightGrayColor,
-                                    ),
-                                  ),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: AppColors.primaryColor,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 8),
-                              Text(
-                                "1 من 2 صفحة",
-                                style: const TextStyle(
-                                  color: AppColors.blackColor,
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 10,
-                                  height: 1.0, // line-height: 100%
-                                  letterSpacing: 0,
-                                ),
-                              )
-                            ],
+                          StepIndicator(
+                            stepText: AppText.page1Of2,
                           ),
-                          Container(
-                            decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: const Color(0x3D000000),
-                                  offset: const Offset(0, 2),
-                                  blurRadius: 7,
-                                  spreadRadius: 0,
-                                ),
-                              ],
-                            ),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => PatientSignupStep2View(),
-                                  ),
-                                );
-                              },
-                              child: Text("متابعه"),
-                            ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.of(context).pushNamed(Routes.patientRegisterStep2);
+                            },
+                            child: const Text(AppText.continueText),
                           ),
                         ],
                       ),

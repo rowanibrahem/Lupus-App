@@ -2,6 +2,7 @@ import 'package:country_flags/country_flags.dart';
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/already_have_account_text.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/auth_banner.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
@@ -129,9 +130,7 @@ class PatientMemberSignupView extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.of(context).push(
-                              MaterialPageRoute(builder: (context) => Scaffold()),
-                            );
+                            Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar);
                           },
                           child: Text(AppText.confirm),
                         ),
