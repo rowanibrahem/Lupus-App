@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/theme/styles.dart';
 
 class InputField extends StatelessWidget {
   final String label;
@@ -15,9 +16,9 @@ class InputField extends StatelessWidget {
   final FocusNode? focusNode;
   final bool obscureText;
   final Icon? suffix;
-   final List<String>? autofillHints;
-    final IconData? suffixIcon;
-    final Function()? suffixPressed;
+  final List<String>? autofillHints;
+  final IconData? suffixIcon;
+  final Function()? suffixPressed;
   const InputField({
     super.key,
     required this.label,
@@ -34,8 +35,8 @@ class InputField extends StatelessWidget {
     this.focusNode,
     this.autofillHints,
     this.obscureText = false,
-     this.suffixIcon, 
-     this.suffixPressed,
+    this.suffixIcon,
+    this.suffixPressed,
   });
 
   @override
@@ -49,9 +50,9 @@ class InputField extends StatelessWidget {
       autofillHints: autofillHints,
       decoration: InputDecoration(
         labelText: label,
-        labelStyle: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+        labelStyle: Styles.text12Gray(context),
         hintText: hint,
-        hintStyle: TextStyle(color: Colors.grey.shade600, fontSize: 12),
+        hintStyle: Styles.text12Gray(context),
         contentPadding: const EdgeInsets.symmetric(horizontal: 7),
         prefixIcon: prefix,
         suffixIcon: suffixIcon != null
@@ -68,7 +69,7 @@ class InputField extends StatelessWidget {
           borderRadius: BorderRadius.circular(2),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: ColorApp.primaryColor),
+          borderSide: const BorderSide(color: AppColors.primaryColor),
           borderRadius: BorderRadius.circular(5),
         ),
       ),

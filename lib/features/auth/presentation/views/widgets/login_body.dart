@@ -75,8 +75,7 @@ class _LoginBodyState extends State<LoginBody> {
               autofillHints: [AutofillHints.password],
               controller: passwordController,
               obscureText: !isPasswordVisible,
-              suffixIcon:
-                  isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+              suffixIcon: isPasswordVisible ? Icons.visibility : Icons.visibility_off,
               suffixPressed: () {
                 setState(() {
                   isPasswordVisible = !isPasswordVisible;
@@ -90,24 +89,24 @@ class _LoginBodyState extends State<LoginBody> {
               },
             ),
           ),
-           Align(
+          Align(
             alignment: Alignment.centerLeft,
-             child: TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const ForgetPasswordView()),
-                    );
-                  },
-                  child: Text(
-                    AppText.forgotPassword,
-                    style: Styles.textStyle14(context).copyWith(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                    ),
-                  ),
+            child: TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ForgetPasswordView()),
+                );
+              },
+              child: Text(
+                AppText.forgotPassword,
+                style: Styles.textStyle14(context).copyWith(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 12,
                 ),
-           ),
+              ),
+            ),
+          ),
           Spacer(),
           CustomButton(
             text: AppText.loginButton,
@@ -146,7 +145,7 @@ class _LoginBodyState extends State<LoginBody> {
                   AppText.signUpText,
                   style: Styles.textStyle14(context).copyWith(
                     fontWeight: FontWeight.w500,
-                    color: ColorApp.primaryColor,
+                    color: AppColors.primaryColor,
                   ),
                 ),
               ),

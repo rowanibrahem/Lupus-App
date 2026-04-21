@@ -16,12 +16,12 @@ class UsersTypeBody extends StatefulWidget {
 class _UsersTypeBodyState extends State<UsersTypeBody> {
   int selectedIndex = -1;
   final List<String> routes = [
-  Routes.patientRegister,
-  Routes.doctorRegister,
-  Routes.pharmacyRegister,
-  Routes.patientMemberRegister,
-  Routes.charityRegister,
-];
+    Routes.patientRegisterStep1,
+    Routes.doctorRegisterStep1,
+    Routes.pharmacyRegister,
+    Routes.patientMemberRegister,
+    Routes.charityRegister,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +54,9 @@ class _UsersTypeBodyState extends State<UsersTypeBody> {
                 return;
               }
 
-             NavigationService.navigateTo(routes[selectedIndex]);
+              NavigationService.navigateTo(routes[selectedIndex]);
             },
           ),
-
           const SizedBox(height: 30),
         ],
       ),

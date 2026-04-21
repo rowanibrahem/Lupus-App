@@ -8,7 +8,7 @@ class UserCardItem extends StatelessWidget {
     super.key,
     required this.text,
     required this.icon,
-    required this.func, 
+    required this.func,
     required this.isSelected,
   });
 
@@ -30,15 +30,14 @@ class UserCardItem extends StatelessWidget {
           height: 120,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: isSelected ? ColorApp.bgColor : ColorApp.cardColor,
+            color: isSelected ? AppColors.bgColor : AppColors.cardColor,
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
-            color: isSelected ? ColorApp.bgColor : Colors.transparent,
-            width: 2,
+              color: isSelected ? AppColors.bgColor : Colors.transparent,
+              width: 2,
+            ),
           ),
-          ),
-          transform: Matrix4.identity()
-          ..scale(isSelected ? 1.05 : 1.0),
+          transform: Matrix4.identity()..scale(isSelected ? 1.05 : 1.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

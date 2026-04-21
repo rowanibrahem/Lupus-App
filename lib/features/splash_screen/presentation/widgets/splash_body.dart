@@ -10,8 +10,7 @@ class SplashBody extends StatefulWidget {
   State<SplashBody> createState() => _SplashBodyState();
 }
 
-class _SplashBodyState extends State<SplashBody>
-    with SingleTickerProviderStateMixin {
+class _SplashBodyState extends State<SplashBody> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 
@@ -42,8 +41,6 @@ class _SplashBodyState extends State<SplashBody>
     super.dispose();
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -56,16 +53,15 @@ class _SplashBodyState extends State<SplashBody>
               opacity: _animation,
               child: Center(
                 child: Image.asset(
-                AssetImages.logo,
+                  AssetImages.logo,
                   width: 200,
                   height: 200,
-                  ),
+                ),
               ),
-             ),
+            ),
           ),
-          
-          ],
-          ),
+        ],
+      ),
     );
   }
 }
