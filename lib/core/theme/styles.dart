@@ -9,6 +9,13 @@ class Styles {
       fontWeight: FontWeight.w500, //meduim
     );
   }
+  static TextStyle textStyle10(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 10),
+      fontWeight: FontWeight.w500, //meduim
+    );
+  }
  static TextStyle textStyle16(BuildContext context) {
     return TextStyle(
       color: ColorApp.textColor,
@@ -21,6 +28,13 @@ class Styles {
       color: ColorApp.secondaryColor,
       fontSize: getResponsiveFontSize(context, fontSize: 14),
       fontWeight: FontWeight.w400, //regular
+    );
+  }
+  static TextStyle textStylebold14(BuildContext context) {
+    return TextStyle(
+      color: Colors.black,
+      fontSize: getResponsiveFontSize(context, fontSize: 14),
+      fontWeight: FontWeight.w700, //regular
     );
   }
 }

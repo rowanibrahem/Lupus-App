@@ -5,6 +5,8 @@ import 'package:lupus_app/core/services/app_router.dart';
 import 'package:lupus_app/core/services/navigation_service.dart';
 import 'package:lupus_app/features/auth/presentation/views/login_view.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
+import 'package:lupus_app/features/home/presentation/views/home_view.dart';
 
 class LupusApp extends StatelessWidget {
   const LupusApp({super.key});
@@ -41,7 +43,7 @@ class LupusApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,  
         onGenerateRoute: AppRouter.generateRoute,
         navigatorKey: NavigationService.navigatorKey,
-        home: LoginView(),
+        home: BottomNavBarView(),
       ),
     );
   }
