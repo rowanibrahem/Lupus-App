@@ -67,7 +67,11 @@ class DoctorSignupStep1View extends StatelessWidget {
                                           child: CountryFlag.fromCountryCode(AppConstants.getCountryCode(value), width: 24, height: 24),
                                         ),
                                   initialSelection: value,
-                                  onSelected: (newValue) => selectedCountry.value = newValue,
+                                  onSelected: (newValue) {
+                                    selectedCountry.value = newValue;
+                                    final cities = AppConstants.citiesList;
+                                    selectedCity.value = cities.isNotEmpty ? cities.first : null;
+                                  },
                                   dropdownMenuEntries: AppConstants.countries
                                       .map(
                                         (country) => DropdownMenuEntry<String>(
@@ -83,16 +87,23 @@ class DoctorSignupStep1View extends StatelessWidget {
                           ),
                           Expanded(
                             child: ValueListenableBuilder<String?>(
-                              valueListenable: selectedCity,
-                              builder: (context, value, _) {
-                                return LabelDropdownMenu<String>(
-                                    label: AppText.city,
-                                    initialSelection: value,
-                                    onSelected: (newValue) => selectedCity.value = newValue,
-                                    dropdownMenuEntries: AppConstants.citiesList.map((city) => DropdownMenuEntry<String>(value: city, label: city)).toList());
+                              valueListenable: selectedCountry,
+                              builder: (context, country, _) {
+                                return ValueListenableBuilder<String?>(
+                                  valueListenable: selectedCity,
+                                  builder: (context, city, _) {
+                                    return LabelDropdownMenu<String>(
+                                      key: ValueKey(country),
+                                      label: AppText.city,
+                                      initialSelection: city,
+                                      onSelected: (v) => selectedCity.value = v,
+                                      dropdownMenuEntries: AppConstants.citiesList.map((c) => DropdownMenuEntry(value: c, label: c)).toList(),
+                                    );
+                                  },
+                                );
                               },
                             ),
-                          )
+                          ),
                         ],
                       ),
                       SizedBox(height: 16),

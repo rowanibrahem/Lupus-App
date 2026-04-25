@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/features/auth/presentation/views/charity_signup/charity_signup_view.dart';
-import 'package:lupus_app/features/auth/presentation/views/doctor_signup/doctor_signup_step1_view.dart';
+import 'package:lupus_app/features/auth/presentation/views/doctor_signup/doctor_signup_step1.dart';
 import 'package:lupus_app/features/auth/presentation/views/doctor_signup/doctor_signup_step2_view.dart';
 import 'package:lupus_app/features/auth/presentation/views/patient_member_signup/patient_member_signup_view.dart';
 import 'package:lupus_app/features/auth/presentation/views/patient_signup/patient_signup_step1_view.dart';

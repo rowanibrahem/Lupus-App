@@ -4,7 +4,6 @@ import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/constants/asset_images.dart';
 import 'package:lupus_app/core/services/routes.dart';
-import 'package:lupus_app/core/theme/color_app.dart';
 import 'package:lupus_app/core/theme/styles.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/already_have_account_text.dart';
 import 'package:lupus_app/features/auth/presentation/views/widgets/label_dropdown_menu.dart';
