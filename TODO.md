@@ -9,6 +9,7 @@ Project Description
 - [ ] Feature(signup) ➤  
 - [ ] Feature(signup) : Handle new theme  
 - [] //!Todo: Download icons
+- [] Add validator
 
 ### In Progress
 
