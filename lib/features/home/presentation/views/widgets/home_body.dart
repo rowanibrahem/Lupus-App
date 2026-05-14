@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/features/home/presentation/views/widgets/header_part.dart';
 import 'package:lupus_app/features/home/presentation/views/widgets/learn_section.dart';
 import 'package:lupus_app/features/home/presentation/views/widgets/medication_section.dart';
