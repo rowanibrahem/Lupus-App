@@ -10,6 +10,32 @@ class Styles {
     );
   }
 
+  static TextStyle text10BlackW600(BuildContext context) {
+    return TextStyle(
+      color: AppColors.blackColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 10),
+      fontWeight: FontWeight.w600, // semibold
+    );
+  }
+
+  static TextStyle text10GrayW500(BuildContext context) {
+    return TextStyle(
+      color: AppColors.grayColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 10),
+      fontWeight: FontWeight.w500, // medium
+      height: 1.6,
+    );
+  }
+
+  static TextStyle text10BlackW500(BuildContext context) {
+    return TextStyle(
+      color: AppColors.blackColor,
+      fontSize: getResponsiveFontSize(context, fontSize: 10),
+      fontWeight: FontWeight.w500, // medium
+      height: 1.6,
+    );
+  }
+
   static TextStyle textStyle10(BuildContext context) {
     return TextStyle(
       color: Colors.black,
@@ -75,6 +101,42 @@ class Styles {
       fontWeight: FontWeight.w700, // bold
     );
   }
+
+  static BoxDecoration customCardBoxDecoration = 
+    BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.06),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
+      );
+  
+  // BoxDecoration(
+  //   color: const Color(0xffF8F2FF),
+  //   borderRadius: BorderRadius.circular(15),
+  //   boxShadow: const [
+  //     BoxShadow(
+  //       color: Color(0x29000000),
+  //       offset: Offset(0, 1),
+  //       blurRadius: 5.0,
+  //       spreadRadius: 0.0,
+  //     ),
+  //   ],
+  //   // gradient: const LinearGradient(
+  //   //   begin: Alignment.centerRight,
+  //   //   end: Alignment.centerLeft,
+  //   //   transform: GradientRotation(277.31 * 3.1415926535 / 180),
+  //   //   colors: [
+  //   //     Color(0xFFafaaff),
+  //   //     Color(0xFFf7ccff),
+  //   //   ],
+  //   //   stops: [-0.0075, 0.9348],
+  //   // ),
+  // );
 }
 
 double getResponsiveFontSize(BuildContext context, {required double fontSize}) {

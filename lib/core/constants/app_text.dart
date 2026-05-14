@@ -100,15 +100,9 @@ class AppText {
   static const addLinkOrUpload = 'أضف رابط أو ارفع الملفات';
   static const alreadyHaveAccountPrompt = 'عندك حساب بالفعل؟ ';
   static const loginNow = 'سجّل دخول';
-  static const chooseAccountSubText =
-      'قولنا إنت مين علشان نقدر نساعدك بطريقتنا الخاصة';
-  static const forgetPasswordTitle = 'هل نسيت كلمة المرور ؟';
-  static const personalInfo = 'المعلومات الشخصية';
-  static const medicalInfo = 'المعلومات الطبية';
   static const hello = 'مرحبا ';
   static const beFine = 'نتمني انك تكون بخير ';
 
-  
   static const learnTitle = 'تعلم عن الذئبة';
   static const viewAll = 'عرض الكل';
   static const learnText1 = 'مرض الذئبة بيؤثر على الجهاز المناعي وقد يسبب التهابات في الجسم.';

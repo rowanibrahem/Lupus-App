@@ -111,4 +111,6 @@ class DoctorSignupModel {
       bio: json['bio'],
     );
   }
+
+  get passwordController => null;
 }

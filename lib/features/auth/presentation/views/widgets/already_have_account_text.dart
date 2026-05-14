@@ -10,24 +10,27 @@ class AlreadyHaveAccountText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text.rich(
-      TextSpan(
-        style: Styles.text12W500(context),
-        children: [
-          TextSpan(
-            text: AppText.alreadyHaveAccountPrompt,
-            style: TextStyle(color: AppColors.blackColor),
-          ),
-          WidgetSpan(
-            child: GestureDetector(
-              onTap: onTap,
-              child: Text(
-                AppText.loginNow,
-                style: TextStyle(color: AppColors.primaryColor),
+    return Align(
+      alignment: Alignment.center,
+      child: Text.rich(
+        TextSpan(
+          style: Styles.text12W500(context),
+          children: [
+            TextSpan(
+              text: AppText.alreadyHaveAccountPrompt,
+              style: TextStyle(color: AppColors.blackColor),
+            ),
+            WidgetSpan(
+              child: GestureDetector(
+                onTap: onTap,
+                child: Text(
+                  AppText.loginNow,
+                  style: TextStyle(color: AppColors.primaryColor),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

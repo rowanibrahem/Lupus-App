@@ -23,7 +23,7 @@ class AppColors {
 
   static const Color whiteSoft = Color(0xFFF8FAFC);
 
-  static const Color grayBlue = Color(0xFF627188);
+  static const Color grayBlue = Color(0xFFAAA7A7);
   static const Color graySoft = Color(0xFF8C9DB5);
 
   static const Color purple = Color(0xFF8B5CF6);
