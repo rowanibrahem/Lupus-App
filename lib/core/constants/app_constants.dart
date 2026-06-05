@@ -614,105 +614,550 @@ abstract class AppConstants {
       ],
     },
   ];
-  static const List<Map<String, String>> charities = [
-  {
-    'name': 'جمعية دعم أمراض المناعة الذاتية',
-    'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
-    'location': 'القاهرة - مدينة نصر',
-  },
-  {
-    'name': 'جمعية الذئبة الحمراء للدعم',
-    'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
-    'location': 'القاهرة - مدينة نصر',
-  },
-  {
-    'name': 'مؤسسة أمل لمرضى المناعة',
-    'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
-    'location': 'الإسكندرية - سموحة',
-  },
-  {
-    'name': 'جمعية الرعاية الصحية المتكاملة',
-    'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
-    'location': 'الجيزة - المهندسين',
-  },
-];
-static const List<Map<String, String>> charityCases = [
-  {
-    'title': 'مطلوب دعم مادي عاجل',
-    'amount': '3000ج',
-    'remaining': '500ج',
-    'progress': '0.7',
-    'image': 'assets/images/charity_illustration.png',
-  },
-  {
-    'title': 'مطلوب دعم مادي عاجل',
-    'amount': '6000ج',
-    'remaining': '3000ج',
-    'progress': '0.5',
-    'image': 'assets/images/charity_illustration.png',
-  },
-  {
-    'title': 'مطلوب أدوية عاجلة',
-    'amount': '1500ج',
-    'remaining': '200ج',
-    'progress': '0.85',
-    'image': 'assets/images/charity_illustration.png',
-  },
-];
-static const List<Map<String, String>> medicinesCases = [
-  {
-    'title': 'حالة دواء مسجّلة',
-    'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
-    'image': 'assets/images/medicine_illustration.png',
-  },
-  {
-    'title': 'فرصة أجر... تبرع بالدم',
-    'description': 'مطلوب متبرعين بالدم بشكل عاجل لدعم حالة مرضية.',
-    'image': 'assets/images/blood_illustration.png',
-  },
-  {
-    'title': 'حالة دواء مسجّلة',
-    'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
-    'image': 'assets/images/medicine_illustration.png',
-  },
-  {
-    'title': 'فرصة أجر... تبرع بالدم',
-    'description': 'مطلوب متبرعين بالدم بشكل عاجل لدعم حالة مرضية.',
-    'image': 'assets/images/blood_illustration.png',
-  },
-  {
-    'title': 'حالة دواء مسجّلة',
-    'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
-    'image': 'assets/images/medicine_illustration.png',
-  },
-];
-static const List<Map<String, String>> contributions = [
-  {
-    'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
-    'description': 'متوفر دواء سيليسليت 500',
-    'image': 'assets/images/blood_illustration.png',
-  },
-  {
-    'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
-    'description': 'متوفر دواء سيليسليت 500',
-    'image': 'assets/images/blood_illustration.png',
-  },
-  {
-    'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
-    'description': 'متوفر دواء سيليسليت 500',
-    'image': 'assets/images/blood_illustration.png',
-  },
-  {
-    'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
-    'description': 'متوفر دواء سيليسليت 500',
-    'image': 'assets/images/medicine_illustration.png',
-  },
-  {
-    'title': 'فرصة أجر... تبرع بالدم',
-    'description': 'مطلوب متبرعين بالدم بشكل عاجل لدعم حالة مرضية.',
-    'image': 'assets/images/blood_illustration.png',
-  },
-];
+  static const List<Map<String, dynamic>> communities = [
+    {
+      'name': 'جمعية دعم أمراض المناعة الذاتية',
+      'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
+      'location': 'القاهرة - مدينة نصر',
+      'availableServices': [
+        {
+          "icon": Icons.volunteer_activism_outlined,
+          "label": 'الدعم المادي',
+        },
+        {
+          "icon": Icons.medication_outlined,
+          "label": 'أدوية',
+        },
+        {
+          "icon": Icons.psychology_outlined,
+          "label": 'دعم نفسي',
+        },
+      ],
+      'contactMethods': [
+        {
+          "icon": Icons.language,
+          "label": 'WWW.Slu.Orndvx.Com',
+        },
+        {
+          "icon": Icons.phone_outlined,
+          "label": '01027778899',
+        },
+        {
+          "icon": Icons.email_outlined,
+          "label": 'support@slu.org',
+        },
+      ],
+      'financialSupports': [
+        {
+          'title': 'مطلوب دعم مادي عاجل',
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'amount': '3000ج',
+          'remaining': '500ج',
+          'progress': '0.7',
+          'image': 'assets/images/charity_illustration.png',
+        },
+        {
+          'title': 'مطلوب دعم مادي عاجل',
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'amount': '6000ج',
+          'remaining': '3000ج',
+          'progress': '0.5',
+          'image': 'assets/images/charity_illustration.png',
+        },
+        {
+          'title': 'مطلوب أدوية عاجلة',
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'amount': '1500ج',
+          'remaining': '200ج',
+          'progress': '0.85',
+          'image': 'assets/images/charity_illustration.png',
+        },
+      ],
+      'contributions': [
+        {
+          'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
+          'description': 'متوفر دواء سيليسليت 500',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
+          'description': 'متوفر دواء سيليسليت 500',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
+          'description': 'متوفر دواء سيليسليت 500',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'متبرع فردي يعرض دواء خاص بمرض الذئبة',
+          'description': 'متوفر دواء سيليسليت 500',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+      ],
+      'medicines': [
+        {
+          'title': 'حالة دواء مسجّلة',
+          'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'فرصة أجر... تبرع بالدم',
+          'description': 'مطلوب متبرعين بالدم بشكل عاجل لدعم حالة مرضية.',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'حالة دواء مسجّلة',
+          'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'فرصة أجر... تبرع بالدم',
+          'description': 'مطلوب متبرعين بالدم بشكل عاجل لدعم حالة مرضية.',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'حالة دواء مسجّلة',
+          'description': 'حالة مسجّلة لدى الجمعية لمريضة ذئبة بحاجة إلى دواء ضروري لاستكمال العلاج',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+      ],
+    },
+    {
+      'name': 'جمعية الذئبة الحمراء للدعم',
+      'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
+      'location': 'القاهرة - مدينة نصر',
+      'availableServices': [
+        {
+          "icon": Icons.medication_outlined,
+          "label": 'توفير أدوية',
+        },
+        {
+          "icon": Icons.school_outlined,
+          "label": 'ورش توعية',
+        },
+        {
+          "icon": Icons.groups_outlined,
+          "label": 'مجموعات دعم',
+        },
+      ],
+      'contactMethods': [
+        {
+          "icon": Icons.phone_outlined,
+          "label": '01112223344',
+        },
+        {
+          "icon": Icons.language,
+          "label": 'WWW.LupusSupport.Org',
+        },
+        {
+          "icon": Icons.facebook_outlined,
+          "label": 'fb.com/lupus.support',
+        },
+      ],
+      'financialSupports': [
+        {
+          'title': 'مساعدة لعلاج حالة ذئبة',
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'amount': '5000ج',
+          'remaining': '1500ج',
+          'progress': '0.7',
+          'image': 'assets/images/charity_illustration.png',
+        },
+        {
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'title': 'دعم جلسات علاج مناعي',
+          'amount': '2500ج',
+          'remaining': '700ج',
+          'progress': '0.72',
+          'image': 'assets/images/charity_illustration.png',
+        },
+      ],
+      'contributions': [
+        {
+          'title': 'متبرع يوفر أدوية مناعة',
+          'description': 'متوفر دواء هيدروكسي كلوروكوين بكمية محدودة',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'تبرع لمريضة ذئبة',
+          'description': 'توفير أدوات طبية ومستلزمات متابعة شهرية',
+          'image': 'assets/images/blood_illustration.png',
+        },
+      ],
+      'medicines': [
+        {
+          'title': 'حالة بحاجة لدواء عاجل',
+          'description': 'مريضة بحاجة إلى علاج مناعي بشكل عاجل لاستكمال الخطة العلاجية',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'فرصة تبرع بالدم',
+          'description': 'الحاجة إلى متبرعين بالدم لدعم إحدى الحالات الحرجة',
+          'image': 'assets/images/blood_illustration.png',
+        },
+      ],
+    },
+    {
+      'name': 'مؤسسة أمل لمرضى المناعة',
+      'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
+      'location': 'الإسكندرية - سموحة',
+      'availableServices': [
+        {
+          "icon": Icons.favorite_outline,
+          "label": 'رعاية منزلية',
+        },
+        {
+          "icon": Icons.psychology_outlined,
+          "label": 'دعم نفسي',
+        },
+        {
+          "icon": Icons.medical_services_outlined,
+          "label": 'تحاليل طبية',
+        },
+      ],
+      'contactMethods': [
+        {
+          "icon": Icons.phone_outlined,
+          "label": '01234567890',
+        },
+        {
+          "icon": Icons.location_on_outlined,
+          "label": 'سموحة - الإسكندرية',
+        },
+        {
+          "icon": Icons.email_outlined,
+          "label": 'amal.foundation@mail.com',
+        },
+      ],
+      'financialSupports': [
+        {
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'title': 'دعم علاج شهري',
+          'amount': '4000ج',
+          'remaining': '1000ج',
+          'progress': '0.75',
+          'image': 'assets/images/charity_illustration.png',
+        },
+        {
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'title': 'مساعدة لشراء تحاليل',
+          'amount': '1800ج',
+          'remaining': '600ج',
+          'progress': '0.66',
+          'image': 'assets/images/charity_illustration.png',
+        },
+      ],
+      'contributions': [
+        {
+          'title': 'متبرع يوفر أجهزة قياس',
+          'description': 'توفير أجهزة متابعة ضغط وسكر لبعض الحالات',
+          'image': 'assets/images/blood_illustration.png',
+        },
+        {
+          'title': 'مساهمة دوائية',
+          'description': 'توفير أدوية مناعة لمدة شهر كامل',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+      ],
+      'medicines': [
+        {
+          'title': 'دواء غير متوفر',
+          'description': 'الجمعية تبحث عن متبرعين لتوفير علاج مناعي نادر لحالة حرجة',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'مطلوب متبرعين بالدم',
+          'description': 'حالة طارئة تحتاج إلى فصائل دم بشكل عاجل',
+          'image': 'assets/images/blood_illustration.png',
+        },
+      ],
+    },
+    {
+      'name': 'جمعية الرعاية الصحية المتكاملة',
+      'description': 'توفر جلسات توعية، دعم نفسي، مجموعات مشاركة، ومساعدات للمرضى.',
+      'location': 'الجيزة - المهندسين',
+      'availableServices': [
+        {
+          "icon": Icons.local_hospital_outlined,
+          "label": 'فحوصات طبية',
+        },
+        {
+          "icon": Icons.support_agent_outlined,
+          "label": 'دعم واستشارات',
+        },
+        {
+          "icon": Icons.menu_book_outlined,
+          "label": 'مواد تعليمية',
+        },
+        {
+          "icon": Icons.groups_outlined,
+          "label": 'مجتمع داعم',
+        },
+      ],
+      'contactMethods': [
+        {
+          "icon": Icons.phone_outlined,
+          "label": '01555557777',
+        },
+        {
+          "icon": Icons.language,
+          "label": 'WWW.HealthCare.Org',
+        },
+        {
+          "icon": Icons.email_outlined,
+          "label": 'contact@healthcare.org',
+        },
+      ],
+      'financialSupports': [
+        {
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'title': 'دعم جلسات علاج',
+          'amount': '7000ج',
+          'remaining': '2500ج',
+          'progress': '0.64',
+          'image': 'assets/images/charity_illustration.png',
+        },
+        {
+          "content": "مريضة ذئبة غير قادرة على توفير تكاليف العلاج الشهرية.  ساهم معنا في تخفيف العبء ومساعدتها على استكمال علاجها.",
+          'title': 'مساعدة شراء أدوية',
+          'amount': '3200ج',
+          'remaining': '1200ج',
+          'progress': '0.62',
+          'image': 'assets/images/charity_illustration.png',
+        },
+      ],
+      'contributions': [
+        {
+          'title': 'تبرع بأدوية مناعة',
+          'description': 'توفير كمية من الأدوية للحالات غير القادرة',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'دعم أجهزة طبية',
+          'description': 'توفير أجهزة متابعة صحية لبعض المرضى',
+          'image': 'assets/images/blood_illustration.png',
+        },
+      ],
+      'medicines': [
+        {
+          'title': 'حالة بحاجة لعلاج شهري',
+          'description': 'مريضة بحاجة إلى استكمال العلاج المناعي الشهري بشكل عاجل',
+          'image': 'assets/images/medicine_illustration.png',
+        },
+        {
+          'title': 'دعوة للتبرع بالدم',
+          'description': 'الجمعية تطلب متبرعين لدعم إحدى الحالات الحرجة',
+          'image': 'assets/images/blood_illustration.png',
+        },
+      ],
+    },
+  ];
+
+  static const Map<String, dynamic> religion = {
+    "listenAndRest": {
+      'mostListened': [
+        {
+          "title": 'الصبر عند المرض',
+          "desc": 'كلمات إيمانية تواسي القلب',
+          "audio": 'audio/religion/patience_at_illness.mp3',
+        },
+        {
+          "title": 'رحمة الله الواسعة',
+          "desc": 'رسالة طمأنينة وأمل للمريض',
+          "audio": 'audio/religion/allah_mercy.mp3',
+        },
+        {
+          "title": 'الابتلاء طريق الجنة',
+          "desc": 'معاني الصبر والرضا بقضاء الله',
+          "audio": 'audio/religion/trial_to_paradise.mp3',
+        },
+        {
+          "title": 'لا تيأس من رحمة الله',
+          "desc": 'تذكير بالأمل والسكينة',
+          "audio": 'audio/religion/do_not_despair.mp3',
+        },
+      ],
+      'quranicRecitations': [
+        {
+          "title": 'سورة الشرح',
+          "desc": '﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا﴾',
+          "audio": 'audio/quran/surah_al_sharh.mp3',
+        },
+        {
+          "title": 'سورة الضحى',
+          "desc": 'سورة تبعث الطمأنينة والأمل',
+          "audio": 'audio/quran/surah_al_duha.mp3',
+        },
+        {
+          "title": 'سورة يوسف',
+          "desc": 'سورة الصبر والفرج بعد الشدة',
+          "audio": 'audio/quran/surah_yusuf.mp3',
+        },
+        {
+          "title": 'سورة الرحمن',
+          "desc": 'تلاوة هادئة ومريحة للنفس',
+          "audio": 'audio/quran/surah_al_rahman.mp3',
+        },
+        {
+          "title": 'سورة الملك',
+          "desc": 'من السور المباركة العظيمة',
+          "audio": 'audio/quran/surah_al_mulk.mp3',
+        },
+        {
+          "title": 'آية الكرسي',
+          "desc": 'من أعظم آيات القرآن الكريم',
+          "audio": 'audio/quran/ayat_al_kursi.mp3',
+        },
+      ],
+      'recordedSupplications': [
+        {
+          "title": 'أذكار الصباح',
+          "desc": 'أذكار لبداية يوم مطمئن',
+          "audio": 'audio/azkar/morning_azkar.mp3',
+        },
+        {
+          "title": 'أذكار المساء',
+          "desc": 'أذكار السكينة قبل النوم',
+          "audio": 'audio/azkar/evening_azkar.mp3',
+        },
+        {
+          "title": 'أسماء الله الحسنى',
+          "desc": 'تدبر في أسماء الله وصفاته',
+          "audio": 'audio/azkar/allah_names.mp3',
+        },
+        {
+          "title": 'أذكار النوم',
+          "desc": 'أذكار تساعد على الراحة والطمأنينة',
+          "audio": 'audio/azkar/sleep_azkar.mp3',
+        },
+        {
+          "title": 'من دعاء الرسول ﷺ',
+          "desc": 'أدعية نبوية جامعة',
+          "audio": 'audio/azkar/prophet_dua.mp3',
+        },
+        {
+          "title": 'الرقية بالقرآن',
+          "desc": 'آيات الرقية الشرعية',
+          "audio": 'audio/azkar/ruqyah.mp3',
+        },
+        {
+          "title": 'دعاء الهم والحزن',
+          "desc": 'دعاء لتفريج الكرب والضيق',
+          "audio": 'audio/azkar/sadness_dua.mp3',
+        },
+        {
+          "title": 'دعاء الكرب',
+          "desc": 'دعاء عند الشدة والضيق',
+          "audio": 'audio/azkar/distress_dua.mp3',
+        },
+        {
+          "title": 'دعاء الشفاء',
+          "desc": 'أدعية للشفاء والعافية',
+          "audio": 'audio/azkar/healing_dua.mp3',
+        },
+        {
+          "title": 'دعاء الرضا بالقضاء',
+          "desc": 'طمأنينة وتسليم لأمر الله',
+          "audio": 'audio/azkar/contentment_dua.mp3',
+        },
+        {
+          "title": 'دعاء تفريج الهم',
+          "desc": 'دعاء يبعث الراحة في القلب',
+          "audio": 'audio/azkar/relief_dua.mp3',
+        },
+      ],
+    },
+    "watchAndReflect": {
+      'faithBasedVideos': [
+        {
+          "title": 'الصبر عند المرض',
+          "desc": 'كلمات إيمانية تواسي القلب',
+          "audio": 'audio/religion/patience_at_illness.mp3',
+        },
+        {
+          "title": 'رحمة الله لا تنقطع',
+          "desc": 'رسائل أمل لكل مبتلى',
+          "audio": 'audio/religion/allah_mercy.mp3',
+        },
+        {
+          "title": 'كيف تواجه الابتلاء؟',
+          "desc": 'معاني الصبر والثبات في المحن',
+          "audio": 'audio/religion/facing_trials.mp3',
+        },
+        {
+          "title": 'طمأنينة القلب بذكر الله',
+          "desc": 'رحلة إيمانية نحو السكينة',
+          "audio": 'audio/religion/peace_with_dhikr.mp3',
+        },
+        {
+          "title": 'الأمل بعد التعب',
+          "desc": 'رسالة لكل من أثقله المرض',
+          "audio": 'audio/religion/hope_after_pain.mp3',
+        },
+      ],
+      'inspirations': [
+        {
+          "title": 'قصة أيوب عليه السلام',
+          "desc": 'أعظم دروس الصبر والرضا',
+          "audio": 'audio/inspiration/prophet_ayoub.mp3',
+        },
+        {
+          "title": 'لا تحزن',
+          "desc": 'كلمات تمنح القلب راحة وسكينة',
+          "audio": 'audio/inspiration/do_not_be_sad.mp3',
+        },
+        {
+          "title": 'مع العسر يسرا',
+          "desc": 'رسائل قرآنية تبعث الأمل',
+          "audio": 'audio/inspiration/with_hardship_comes_ease.mp3',
+        },
+        {
+          "title": 'ثق بالله',
+          "desc": 'كيف يمنحنا التوكل قوة داخلية',
+          "audio": 'audio/inspiration/trust_in_allah.mp3',
+        },
+        {
+          "title": 'رحلة التعافي النفسي',
+          "desc": 'خواطر تساعد على الاطمئنان',
+          "audio": 'audio/inspiration/healing_journey.mp3',
+        },
+      ],
+    },
+    'remembranceAndComfort': [
+      {
+        "title": 'أذكار الطمأنينة',
+        "desc": 'أذكار تبعث السكينة في القلب',
+        "audio": 'audio/comfort/peace_azkar.mp3',
+      },
+      {
+        "title": 'دعاء الشفاء',
+        "desc": 'أدعية للراحة والعافية',
+        "audio": 'audio/comfort/healing_dua.mp3',
+      },
+      {
+        "title": 'آيات السكينة',
+        "desc": 'تلاوات مريحة للنفس',
+        "audio": 'audio/comfort/tranquility_verses.mp3',
+      },
+      {
+        "title": 'الرقية الشرعية',
+        "desc": 'آيات وأدعية للحفظ والطمأنينة',
+        "audio": 'audio/comfort/ruqyah.mp3',
+      },
+      {
+        "title": 'دعاء تفريج الهم',
+        "desc": 'دعاء يخفف الحزن والكرب',
+        "audio": 'audio/comfort/relief_dua.mp3',
+      },
+      {
+        "title": 'ذكر الله حياة القلوب',
+        "desc": 'خواطر عن أثر الذكر في النفس',
+        "audio": 'audio/comfort/dhikr_hearts.mp3',
+      },
+    ],
+  };
+  static final List<String> activitiesTabs = ['الدعم المادي', 'مساهمات', 'أدوية'];
 }
 
 class Country {

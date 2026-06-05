@@ -2,15 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:lupus_app/core/theme/styles.dart';
 
 class CustomCard extends StatelessWidget {
-  const CustomCard({super.key, this.child, this.radius = 25});
+  const CustomCard(this.child,{
+    super.key,
+    
+    this.height,
+    this.width,
+  });
   final Widget? child;
-  final double radius;
+  final double? width;
+  final double? height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.all(14),
+      width: width,
+      height: height,
+      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
       decoration: Styles.customCardBoxDecoration,
       child: child,
     );

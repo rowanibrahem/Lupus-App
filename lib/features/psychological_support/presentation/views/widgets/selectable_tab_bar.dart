@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
+import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/utils/widget_extensions.dart';
 
 class TabsSection extends StatelessWidget {
   const TabsSection({
@@ -47,6 +49,10 @@ class TabsSection extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         // const Divider(color: Color(0xffACACAC)),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
+          child: const Divider(color: AppColors.lightGrayColor).paddingBottom(8),
+        ),
       ],
     );
   }

@@ -15,38 +15,21 @@ class PharmacySignupView extends StatefulWidget {
 }
 
 class _PharmacySignupViewState extends State<PharmacySignupView> {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final ValueNotifier<AutovalidateMode> autovalidateMode = ValueNotifier(AutovalidateMode.disabled);
-  void enableAutoValidation() => autovalidateMode.value = autovalidateMode.value == AutovalidateMode.disabled ? AutovalidateMode.always : autovalidateMode.value;
-
-  @override
-  void dispose() {
-    autovalidateMode.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return BodyView(
       SingleChildScrollView(
         padding: EdgeInsets.zero,
         child: Form(
-          key: formKey,
-          autovalidateMode: autovalidateMode.value,
           child: Column(
             children: [
               AuthBanner(title: AppText.pharmacySignupTitle),
               const SizedBox(height: 16),
               PharmacySignupFields(),
-              PharmacySignupButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
-                    Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar);
-                  } else {
-                    enableAutoValidation();
-                  }
-                },
+              const SizedBox(height: 12),
+              ElevatedButton(
+                onPressed: () => Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar),
+                child: Text(AppText.confirm),
               ),
               AlreadyHaveAccountText(),
               const SizedBox(height: 16),

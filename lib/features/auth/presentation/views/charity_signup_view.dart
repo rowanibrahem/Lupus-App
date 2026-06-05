@@ -16,8 +16,13 @@ class CharitySignupView extends StatefulWidget {
 
 class _CharitySignupViewState extends State<CharitySignupView> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final ValueNotifier<AutovalidateMode> autovalidateMode = ValueNotifier(AutovalidateMode.disabled);
-  void enableAutoValidation() => autovalidateMode.value = autovalidateMode.value == AutovalidateMode.disabled ? AutovalidateMode.always : autovalidateMode.value;
+  final ValueNotifier<AutovalidateMode> autovalidateMode = ValueNotifier(
+    AutovalidateMode.onUserInteraction,
+  );
+
+  void enableAutoValidation() {
+    if (autovalidateMode.value != AutovalidateMode.always) autovalidateMode.value = AutovalidateMode.always;
+  }
 
   @override
   void dispose() {
@@ -29,32 +34,37 @@ class _CharitySignupViewState extends State<CharitySignupView> {
   Widget build(BuildContext context) {
     return BodyView(
       SingleChildScrollView(
-        padding: EdgeInsets.zero,
-        child: Form(
-          key: formKey,
-          autovalidateMode: autovalidateMode.value,
-          child: ListView(
-            padding: EdgeInsets.all(0),
-            children: [
-              AuthBanner(title: AppText.organizationSignupTitle),
-              const SizedBox(height: 16),
-              CharitySignupFields(),
-              CharitySignupButton(
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
+          padding: EdgeInsets.zero,
+          child:
+              // ValueListenableBuilder<AutovalidateMode>(
+              //     valueListenable: autovalidateMode,
+              //     builder: (context, mode, _) {
+              //       return
+              Form(
+            key: formKey,
+            // autovalidateMode: mode,
+            child: Column(
+              children: [
+                AuthBanner(title: AppText.organizationSignupTitle),
+                const SizedBox(height: 16),
+                CharitySignupFields(),
+                CharitySignupButton(
+                  onPressed: () {
+                    // if (formKey.currentState!.validate()) {
+                    // formKey.currentState!.save();
                     Navigator.of(context).pushReplacementNamed(Routes.bottomNavBar);
-                  } else {
-                    enableAutoValidation();
-                  }
-                },
-              ),
-              AlreadyHaveAccountText(),
-              const SizedBox(height: 16),
-            ],
+                    // } else {
+                    // enableAutoValidation();
+                    // }
+                  },
+                ),
+                AlreadyHaveAccountText(),
+                const SizedBox(height: 16),
+              ],
+            ),
+          )
+          // ;}),
           ),
-        ),
-      ),
     );
   }
 }

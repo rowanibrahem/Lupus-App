@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lupus_app/core/constants/app_constants.dart';
 import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/core/shared_widgets/custom_app_bar.dart';
@@ -43,7 +44,7 @@ class _PsychologicalSupportViewState extends State<PsychologicalSupportView> {
                       arguments: NewPostConfig.story(
                         onShared: () {},
                       )),
-                  shape: const CircleBorder(), 
+                  shape: const CircleBorder(),
                   child: Icon(Icons.person_add), //! ابدأ تجربتك التطوعية...   Forms
                 )
               : null,
@@ -75,7 +76,6 @@ class _PsychologicalSupportViewState extends State<PsychologicalSupportView> {
                   separatorBuilder: (_, __) => const SizedBox(height: 16),
                   itemBuilder: (context, index) => StoryDetailsCard(stories[index]),
                 ),
-              //  StoriesSection(),
               if (selectedIndex == 2) TherapySessionsTypesSection() // Text("جلسات"),
             ],
           ),
@@ -222,7 +222,7 @@ class StoryDetailsCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.favorite_border, size: 18),
+                    SvgPicture.asset("assets/icons/favourite.svg"),
                     SizedBox(width: 4),
                     Text(
                       story["likes"]!.length!.toString(),
@@ -354,7 +354,7 @@ class StoryDetailsCard extends StatelessWidget {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.mode_comment_outlined, size: 18),
+                      SvgPicture.asset("assets/icons/comment.svg"),
                       SizedBox(width: 4),
                       Text(
                         story["comments"].length!.toString(),
@@ -370,7 +370,7 @@ class StoryDetailsCard extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Icon(Icons.share, size: 18),
+                SvgPicture.asset("assets/icons/share.svg"),
               ],
             ),
           ),

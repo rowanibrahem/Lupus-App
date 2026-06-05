@@ -1,161 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/shared_widgets/custom_app_bar.dart';
-import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/theme/styles.dart';
+import 'package:lupus_app/core/utils/widget_extensions.dart';
+import 'package:lupus_app/features/community_support/presentation/views/widgets/contact_button.dart';
 
-class ContributionDetailsView extends StatelessWidget {
-  const ContributionDetailsView({super.key});
+class ContributeDetailsView extends StatelessWidget {
+  const ContributeDetailsView(this.contribute, {super.key});
+  final Map<String, dynamic> contribute;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(title: 'مساهمات'),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  // ── Illustration ──────────────────────
-                  _IllustrationSection(),
-
-                  // ── Details ───────────────────────────
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      children: [
-                        // title
-                        const Text(
-                          'متبرع فردي يعرض دواء خاص بمرض الذئبة',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.blackColor,
-                          ),
-                        ),
-
-                        const SizedBox(height: 8),
-
-                        // description
-                        const Text(
-                          'متوفر دواء سليسليت 500',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: AppColors.grayColor,
-                          ),
-                        ),
-
-                        const SizedBox(height: 20),
-
-                        // contact title
-                        Align(
-                          alignment: Alignment.centerRight,
-                          child: const Text(
-                            'طرق التواصل:',
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.blackColor,
-                            ),
-                          ),
-                        ),
-
-                        const SizedBox(height: 12),
-
-                        // whatsapp button
-                        _ContactButton(
-                          label: 'رسالة واتساب',
-                          icon: Icons.phone_callback,
-                          // whatsapp,
-                          onTap: () {},
-                        ),
-
-                        const SizedBox(height: 12),
-
-                        // call button
-                        _ContactButton(
-                          label: 'اتصال هاتفي',
-                          icon: Icons.phone_outlined,
-                          onTap: () {},
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// ── Illustration Section ──────────────────────────────────
-class _IllustrationSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      margin: const EdgeInsets.all(16),
-      height: 200,
-      decoration: BoxDecoration(
-        color: const Color(0xFFF5EEFF),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          'assets/images/blood_illustration.png',
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
-
-// ── Contact Button ────────────────────────────────────────
-class _ContactButton extends StatelessWidget {
-  const _ContactButton({
-    required this.label,
-    required this.icon,
-    required this.onTap,
-  });
-
-  final String label;
-  final IconData icon;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 52,
-      child: ElevatedButton(
-        onPressed: onTap,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFF5EEFF),
-          foregroundColor: AppColors.primaryColor,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(14),
-          ),
-        ),
-        child: Row(
+      appBar: const CustomAppBar(title: 'مساهمات'), // !TODO:AppText
+      body: SingleChildScrollView(
+        padding: EdgeInsets.all(16),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Icon(icon, size: 20),
-            const SizedBox(width: 10),
-            Text(
-              label,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w600,
+            SizedBox(
+              width: double.infinity,
+              height: 200,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/images/blood_illustration.png', // !TODO:AppText
+                  fit: BoxFit.cover,
+                ),
               ),
+            ).paddingBottom(16),
+            Text(
+              contribute["title"] ?? '', // !TODO:AppText
+              style: Styles.text14BlackW700(context),
+            ).paddingBottom(6),
+            Text(
+              contribute['description'] ?? "", // !TODO:AppText
+              style: Styles.text12GrayW400(context),
+            ).paddingBottom(24),
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'طرق التواصل:', // !TODO:AppText
+                style: Styles.text14BlackW700(context),
+              ),
+            ).paddingBottom(16),
+            ContactButton(
+              label: 'رسالة واتساب', // !TODO:AppText
+              svgPicture: 'assets/icons/whats.svg',
+              onTap: () {},
+            ).paddingBottom(12),
+            ContactButton(
+              label: 'اتصال هاتفي', // !TODO:AppText
+              svgPicture: 'assets/icons/phone.svg',
+              onTap: () {},
             ),
           ],
         ),
@@ -163,3 +60,4 @@ class _ContactButton extends StatelessWidget {
     );
   }
 }
+

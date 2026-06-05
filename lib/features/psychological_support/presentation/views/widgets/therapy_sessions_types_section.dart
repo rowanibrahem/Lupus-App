@@ -11,8 +11,6 @@ class TherapySessionsTypesSection extends StatelessWidget {
     return Column(
       children: [
         SectionHeader(title: 'جلسات مع اخصائي', onViewAll: () {}),
-
-        const SizedBox(height: 12),
         Row(
           children: [
             Expanded(child: _DoctorCard(name: 'د. سارة عبد الرحمن', specialty: 'علاج سلوكي معرفي', image: 'assets/images/chat1.png', onTap: () {})),
@@ -24,14 +22,12 @@ class TherapySessionsTypesSection extends StatelessWidget {
         const SizedBox(height: 24),
 
         _SectionHeader(title: 'جلسات جماعية', onViewAll: () {}),
-        const SizedBox(height: 12),
         _GroupSessionCard(onJoin: () {}),
 
         const SizedBox(height: 24),
 
         // ── جلسات صوتية مسجلة ────────────────────────────
         _SectionHeader(title: 'جلسات صوتية مسجلة', onViewAll: () {}),
-        const SizedBox(height: 12),
         Row(
           children: [
             Expanded(child: _AudioSessionCard(title: 'التعامل مع الخوف من الانتكاسة', onTap: () {})),

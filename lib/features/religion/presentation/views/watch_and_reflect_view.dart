@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/shared_widgets/custom_app_bar.dart';
+import 'package:lupus_app/core/shared_widgets/custom_card.dart';
 import 'package:lupus_app/core/shared_widgets/section_header.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
 
 class WatchAndReflectView extends StatelessWidget {
-  const WatchAndReflectView({super.key});
+  const WatchAndReflectView(this.watchAndReflect, {super.key});
+  final Map<String, dynamic> watchAndReflect;
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +16,8 @@ class WatchAndReflectView extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // ── Search ──────────────────────────────
             _SearchField(),
-
             const SizedBox(height: 20),
-
             // ── Featured Video ───────────────────────
             _FeaturedVideoCard(
               title: 'الصبر عند المرض',
@@ -31,17 +30,17 @@ class WatchAndReflectView extends StatelessWidget {
 
             // ── Faith Videos ─────────────────────────
             SectionHeader(title: 'فيديوهات إيمانية', onViewAll: () {}),
-            const SizedBox(height: 12),
             SizedBox(
-              height: 160,
+              height: 200,
               child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 12),
                 scrollDirection: Axis.horizontal,
                 reverse: true,
-                itemCount: 4,
+                itemCount: 3, // watchAndReflect['faithBasedVideos'].length,
                 separatorBuilder: (_, __) => const SizedBox(width: 12),
                 itemBuilder: (context, index) => _VideoCard(
-                  title: 'الصبر عند المرض',
-                  subtitle: 'كلمات إيمانية تواسي القلب',
+                  title: watchAndReflect['faithBasedVideos'][index]['title'],
+                  subtitle: watchAndReflect['faithBasedVideos'][index]['desc'],
                   image: 'assets/images/video_thumb2.png',
                   onTap: () {},
                 ),
@@ -52,15 +51,22 @@ class WatchAndReflectView extends StatelessWidget {
 
             // ── Clips ────────────────────────────────
             SectionHeader(title: 'نفحات', onViewAll: () {}),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(child: _ClipCard(title: 'الصبر على البلاء', subtitle: 'الصبر عند المرض', image: 'assets/images/clip_thumb.png', onTap: () {})),
-                const SizedBox(width: 10),
-                Expanded(child: _ClipCard(title: 'الصبر على البلاء!', subtitle: 'الصبر عند المرض', image: 'assets/images/clip_thumb.png', onTap: () {})),
-                const SizedBox(width: 10),
-                Expanded(child: _ClipCard(title: 'الصبر على البلاء!', subtitle: 'الصبر عند المرض', image: 'assets/images/clip_thumb.png', onTap: () {})),
-              ],
+
+            SizedBox(
+              height: 200,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                scrollDirection: Axis.horizontal,
+                reverse: true,
+                itemCount: 3, // watchAndReflect['inspirations'].length,
+                separatorBuilder: (_, __) => const SizedBox(width: 12),
+                itemBuilder: (context, index) => _InspirationsCard(
+                  title: watchAndReflect['inspirations'][index]['title'],
+                  subtitle: watchAndReflect['inspirations'][index]['desc'],
+                  image: 'assets/images/video_thumb2.png',
+                  onTap: () {},
+                ),
+              ),
             ),
 
             const SizedBox(height: 24),
@@ -101,8 +107,6 @@ class _SearchField extends StatelessWidget {
   }
 }
 
-
-
 // ── Featured Video Card ───────────────────────────────────
 class _FeaturedVideoCard extends StatelessWidget {
   const _FeaturedVideoCard({
@@ -122,6 +126,7 @@ class _FeaturedVideoCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Stack(
+        alignment: Alignment.bottomRight,
         children: [
           // thumbnail
           ClipRRect(
@@ -221,9 +226,9 @@ class _VideoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: SizedBox(
+      child: CustomCard(
         width: 150,
-        child: Column(
+        Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             // thumbnail
@@ -318,8 +323,8 @@ class _VideoCard extends StatelessWidget {
 }
 
 // ── Clip Card (vertical short) ────────────────────────────
-class _ClipCard extends StatelessWidget {
-  const _ClipCard({
+class _InspirationsCard extends StatelessWidget {
+  const _InspirationsCard({
     required this.title,
     required this.subtitle,
     required this.image,
@@ -333,70 +338,73 @@ class _ClipCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Stack(
-        children: [
-          // thumbnail
-          ClipRRect(
-            borderRadius: BorderRadius.circular(14),
-            child: Image.asset(
-              image,
-              width: double.infinity,
-              height: 160,
-              fit: BoxFit.cover,
-            ),
-          ),
-
-          // gradient overlay
-          Container(
-            height: 160,
-            decoration: BoxDecoration(
+    return CustomCard(
+      width: 150,
+      GestureDetector(
+        onTap: onTap,
+        child: Stack(
+          children: [
+            // thumbnail
+            ClipRRect(
               borderRadius: BorderRadius.circular(14),
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  Colors.transparent,
-                  Colors.black.withValues(alpha: 0.75),
-                ],
+              child: Image.asset(
+                image,
+                width: double.infinity,
+                height: 160,
+                fit: BoxFit.cover,
               ),
             ),
-          ),
 
-          // title
-          Positioned(
-            top: 12,
-            right: 8,
-            left: 8,
-            child: Text(
-              title,
-              textAlign: TextAlign.right,
-              style: const TextStyle(
-                fontSize: 11,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-                height: 1.4,
+            // gradient overlay
+            Container(
+              height: 160,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(14),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.75),
+                  ],
+                ),
               ),
             ),
-          ),
 
-          // subtitle bottom
-          Positioned(
-            bottom: 10,
-            right: 8,
-            left: 8,
-            child: Text(
-              subtitle,
-              textAlign: TextAlign.right,
-              style: const TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w400,
-                color: Colors.white70,
+            // title
+            Positioned(
+              top: 12,
+              right: 8,
+              left: 8,
+              child: Text(
+                title,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 11,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  height: 1.4,
+                ),
               ),
             ),
-          ),
-        ],
+
+            // subtitle bottom
+            Positioned(
+              bottom: 10,
+              right: 8,
+              left: 8,
+              child: Text(
+                subtitle,
+                textAlign: TextAlign.right,
+                style: const TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white70,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

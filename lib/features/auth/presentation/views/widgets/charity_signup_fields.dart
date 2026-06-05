@@ -32,12 +32,36 @@ class _CharitySignupFieldsState extends State<CharitySignupFields> {
       child: Column(
         spacing: 18,
         children: [
-          LabelTextFormField(label: AppText.organizationName, hintText: AppText.enterPatientName),
-          LabelTextFormField(label: AppText.phoneNumber, hintText: AppText.enterPhoneNumber),
-          LabelTextFormField(label: AppText.email, hintText: AppText.enterEmail),
+          LabelTextFormField(
+            label: AppText.organizationName, hintText: AppText.enterPatientName,
+            // validator: (value) => FormValidatorsAr.validateName(value),
+            // onSaved: ,
+          ),
+          LabelTextFormField(
+            label: AppText.phoneNumber,
+            hintText: AppText.enterPhoneNumber,
+            // validator: (value) => FormValidatorsAr.validatePhoneNumber(value),
+            // onSaved: ,
+          ),
+          LabelTextFormField(
+            label: AppText.email,
+            hintText: AppText.enterEmail,
+            // validator: (value) => FormValidatorsAr.emailValidator(value),
+            // onSaved: ,
+          ),
           AuthPasswordField(isObscure: isObscure),
-          LabelTextFormField(label: AppText.contactNumber, hintText: AppText.enterContactNumber),
-          LabelTextFormField(label: AppText.address, hintText: AppText.enterAddress),
+          LabelTextFormField(
+            label: AppText.contactNumber,
+            hintText: AppText.enterContactNumber,
+            // validator: (value) => FormValidatorsAr.validatePhoneNumber(value),
+            // onSaved: ,
+          ),
+          LabelTextFormField(
+            label: AppText.address,
+            hintText: AppText.enterAddress,
+            // validator: (value) => FormValidatorsAr.validateAddress(value),
+            // onSaved: ,
+          ),
           ValueListenableBuilder<String?>(
             valueListenable: selectedFieldsOfWork,
             builder: (context, value, _) {

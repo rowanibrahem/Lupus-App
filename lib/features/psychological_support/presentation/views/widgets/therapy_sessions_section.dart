@@ -30,7 +30,7 @@ class SupportCommunityCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      child: Column(
+      Column(
         spacing: 20,
         children: [
           Row(
@@ -91,8 +91,7 @@ class GroupSessionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      radius: 15,
-      child: Row(
+      Row(
         children: [
           Expanded(
             child: Column(

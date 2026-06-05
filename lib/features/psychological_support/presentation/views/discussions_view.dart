@@ -24,8 +24,7 @@ class DiscussionsView extends StatelessWidget {
         itemBuilder: (context, index) => DiscussionsDetailsCard(discussions[index]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => 
-         Navigator.pushNamed(context, Routes.createContent, arguments: NewPostConfig.discussion()),
+        onPressed: () => Navigator.pushNamed(context, Routes.createContent, arguments: NewPostConfig.discussion()),
         shape: const CircleBorder(),
         child: Icon(Icons.add),
       ),
@@ -153,7 +152,6 @@ class DiscussionsDetailsCard extends StatelessWidget {
                                       ),
                                     ),
                                     Spacer(),
-                                    const Icon(Icons.favorite_rounded, color: AppColors.primaryColor),
                                     SvgPicture.asset(
                                       "assets/icons/favourite.svg",
                                       colorFilter: ColorFilter.mode(
@@ -177,7 +175,7 @@ class DiscussionsDetailsCard extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Icon(Icons.favorite_border, size: 18),
+                    SvgPicture.asset("assets/icons/favourite.svg"),
                     SizedBox(width: 4),
                     Text(
                       discussion["likes"]!.length!.toString(),
@@ -292,7 +290,7 @@ class DiscussionsDetailsCard extends StatelessWidget {
                                                 ),
                                               ),
                                               const SizedBox(height: 12),
-                                              const Icon(Icons.favorite_outline_rounded),
+                                              SvgPicture.asset("assets/icons/favourite.svg"),
                                             ],
                                           ),
                                         ],
@@ -309,7 +307,7 @@ class DiscussionsDetailsCard extends StatelessWidget {
                   },
                   child: Row(
                     children: [
-                      Icon(Icons.mode_comment_outlined, size: 18),
+                      SvgPicture.asset("assets/icons/comment.svg"),
                       SizedBox(width: 4),
                       Text(
                         discussion["comments"].length!.toString(),
@@ -325,7 +323,7 @@ class DiscussionsDetailsCard extends StatelessWidget {
                   ),
                 ),
                 Spacer(),
-                Icon(Icons.share, size: 18),
+                SvgPicture.asset("assets/icons/share.svg"),
               ],
             ),
           ),

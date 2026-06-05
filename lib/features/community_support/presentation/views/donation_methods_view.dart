@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lupus_app/core/shared_widgets/custom_app_bar.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
 import 'package:lupus_app/core/theme/styles.dart';
-import 'package:lupus_app/features/community_support/presentation/views/activities_view.dart';
 
 class DonationMethodsView extends StatefulWidget {
   const DonationMethodsView({super.key});
@@ -72,12 +71,12 @@ class _DonationMethodsViewState extends State<DonationMethodsView> {
               height: 52,
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ActivitiesView(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const ActivitiesView(),
+                  //   ),
+                  // );
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(

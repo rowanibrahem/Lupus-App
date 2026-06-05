@@ -25,13 +25,27 @@ class _PharmacySignupFieldsState extends State<PharmacySignupFields> {
       child: Column(
         spacing: 18,
         children: [
-          LabelTextFormField(label: AppText.pharmacyName, hintText: AppText.enterPatientName),
-          LabelTextFormField(label: AppText.phoneNumber, hintText: AppText.enterPhoneNumber),
-          LabelTextFormField(label: AppText.email, hintText: AppText.enterEmail),
+          LabelTextFormField(
+            label: AppText.pharmacyName,
+            hintText: AppText.enterPatientName,
+          ),
+          LabelTextFormField(
+            label: AppText.phoneNumber,
+            hintText: AppText.enterPhoneNumber,
+          ),
+          LabelTextFormField(
+            label: AppText.email,
+            hintText: AppText.enterEmail,
+          ),
           AuthPasswordField(isObscure: isObscure),
-          LabelTextFormField(label: AppText.contactNumber, hintText: AppText.enterContactNumber),
-          LabelTextFormField(label: AppText.address, hintText: AppText.enterAddress),
-          const SizedBox(height: 12),
+          LabelTextFormField(
+            label: AppText.contactNumber,
+            hintText: AppText.enterContactNumber,
+          ),
+          LabelTextFormField(
+            label: AppText.address,
+            hintText: AppText.enterAddress,
+          ),
         ],
       ),
     );

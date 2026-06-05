@@ -24,13 +24,25 @@ class ServicesSection extends StatelessWidget {
       ServiceItem(icon: AssetIcons.medicine, title: AppText.serviceMedicine),
       ServiceItem(icon: AssetIcons.tahalil, title: AppText.serviceTests),
       ServiceItem(
+        icon: AssetIcons.friendsIcon,
+        title: AppText.serviceFriends,
+        // onTap: () => Navigator.of(context).pushNamed(Routes.communitySupport),
+      ),
+      ServiceItem(
         icon: AssetIcons.support,
         title: AppText.serviceMentalSupport,
-        onTap: () {
-          Navigator.of(context).pushNamed(Routes.psychologicalSupport);
-        },
+        onTap: () => Navigator.of(context).pushNamed(Routes.psychologicalSupport),
       ),
-      ServiceItem(icon: AssetIcons.friendsIcon, title: AppText.serviceFriends),
+      ServiceItem(
+        icon: AssetIcons.support,
+        title: "الجمعيات",
+        onTap: () => Navigator.of(context).pushNamed(Routes.communitySupport),
+      ),
+      ServiceItem(
+        icon: AssetIcons.mosque,
+        title: "ديننا تقوي",
+        onTap: () => Navigator.of(context).pushNamed(Routes.religion),
+      ),
     ];
 
     return Column(

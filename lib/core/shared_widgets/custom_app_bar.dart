@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:lupus_app/core/shared_widgets/arrow_left_leading.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lupus_app/core/constants/asset_images.dart';
+import 'package:lupus_app/core/theme/color_app.dart';
+import 'package:lupus_app/core/theme/styles.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -9,7 +12,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   const CustomAppBar({
     super.key,
-    this.title = "", // Default title from your snippet
+    this.title = "",
     this.leading,
     this.actions,
     this.elevation = 0,
@@ -20,18 +23,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: elevation,
       centerTitle: true,
-      backgroundColor: Colors.white,
-      title: Text(
-        title,
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w700,
-          height: 1.0,
-          color: Colors.black,
-          letterSpacing: 16 * 0.015,
-        ),
-      ),
-      leading: leading ?? const ArrowLeftLeading(),
+      backgroundColor: AppColors.whiteColor,
+      title: Text(title, style: Styles.text16BlackW700(context)),
+      leading: leading ??
+          GestureDetector(
+            onTap: () => Navigator.pop(context),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: SvgPicture.asset(AssetImages.arrowLeft),
+            ),
+          ),
       actions: actions,
     );
   }

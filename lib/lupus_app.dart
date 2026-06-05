@@ -4,10 +4,7 @@ import 'package:lupus_app/core/services/app_router.dart';
 import 'package:lupus_app/core/services/navigation_service.dart';
 import 'package:lupus_app/core/theme/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lupus_app/features/community_support/presentation/views/activities_view.dart';
-import 'package:lupus_app/features/community_support/presentation/views/charities_view.dart';
-import 'package:lupus_app/features/psychological_support/presentation/views/psychological_support_view.dart';
-import 'package:lupus_app/features/religion/presentation/views/religion_view.dart';
+import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
 
 class LupusApp extends StatelessWidget {
   const LupusApp({super.key});
@@ -31,19 +28,7 @@ class LupusApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.generateRoute,
         navigatorKey: NavigationService.navigatorKey,
-        home: 
-        ReligionView(),
-        //? ActivitiesView(),
-        // CharitiesView(),
-        //? PatientSignupView(),
-        // PharmacySignupView(),
-        //  NewPostView(),
-        // PostsView(),
-        //  FriendsScreen(),
-        // TherapySessionsScreen(),
-        //? PsychologicalSupportView(),
-        //  CharitySignupView(),
-        // BottomNavBarView(),
+        home: BottomNavBarView(),
       ),
     );
   }

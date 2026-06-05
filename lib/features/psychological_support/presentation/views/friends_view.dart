@@ -180,7 +180,7 @@ class FriendRequestCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomCard(
-      child: Row(
+      Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           CircleAvatar(

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lupus_app/core/shared_widgets/custom_app_bar.dart';
 import 'package:lupus_app/core/shared_widgets/section_header.dart';
 import 'package:lupus_app/core/theme/color_app.dart';
 import 'package:lupus_app/core/theme/styles.dart';
 
 class ListenAndRelaxView extends StatelessWidget {
-  const ListenAndRelaxView({super.key});
+  const ListenAndRelaxView(this.listenAndRest, {super.key});
+  final Map<String, dynamic> listenAndRest;
 
   @override
   Widget build(BuildContext context) {
@@ -15,58 +17,66 @@ class ListenAndRelaxView extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            // ── Search ──────────────────────────────
-            _SearchField(),
-
+            _SearchField(), //.paddingBottom(0),
             const SizedBox(height: 24),
-
-            // ── Most Listened ────────────────────────
-            SectionHeader(title: 'الأكثر استماعاً', onViewAll: () {}),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: _AudioGridCard(
-                    title: 'الصبر عند المرض',
-                    subtitle: 'كلمات إيمانية تواسي القلب',
-                    onTap: () {},
-                  ),
+            SectionHeader(title: 'الأكثر استماعاً', onViewAll: () {}), //.paddingBottom(0),
+            SizedBox(
+              height: 200,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                itemCount: listenAndRest['mostListened'].length,
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                separatorBuilder: (_, __) => const SizedBox(width: 16),
+                itemBuilder: (context, index) => _AudioGridCard(
+                  title: listenAndRest['mostListened'][index]['title'],
+                  subtitle: listenAndRest['mostListened'][index]['desc'],
+                  onTap: () {}, //!TODO: Audio_pop.up
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _AudioGridCard(
-                    title: 'الصبر عند المرض',
-                    subtitle: 'كلمات إيمانية تواسي القلب',
-                    onTap: () {},
-                  ),
-                ),
-              ],
+              ),
             ),
-
-            const SizedBox(height: 24),
 
             // ── Quran Recitations ────────────────────
             SectionHeader(title: 'تلاوات قرآنية', onViewAll: () {}),
-            const SizedBox(height: 12),
-            _QuranCard(title: 'سورة الشرح', onTap: () {}),
-            const SizedBox(height: 10),
-            _QuranCard(title: 'سورة الضحى', onTap: () {}),
+            SizedBox(
+              height: 250,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                itemCount: 3, // listenAndRest['quranicRecitations'].length,
+                // scrollDirection: Axis.horizontal,
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                separatorBuilder: (_, __) => const SizedBox(height: 16),
+                itemBuilder: (context, index) => _QuranCard(
+                  title: listenAndRest['quranicRecitations'][index]['title'],
+                  onTap: () {}, //!TODO: Audio_pop.up
+                ),
+              ),
+            ),
 
-            const SizedBox(height: 24),
+            // _QuranCard(title: 'سورة الشرح', onTap: () {}),
+            // const SizedBox(height: 10),
+            // _QuranCard(title: 'سورة الضحى', onTap: () {}),
+
+            // const SizedBox(height: 24),
 
             // ── Recorded Adhkar ──────────────────────
             SectionHeader(title: 'أذكار مسجلة', onViewAll: () {}),
-            const SizedBox(height: 12),
-            Row(
-              children: [
-                Expanded(
-                  child: _AdhkarGridCard(title: 'أذكار الصباح', onTap: () {}),
+            SizedBox(
+              height: 200,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                itemCount: 3, // listenAndRest['recordedSupplications'].length,
+                scrollDirection: Axis.horizontal,
+                physics: BouncingScrollPhysics(),
+                shrinkWrap: true,
+                separatorBuilder: (_, __) => const SizedBox(width: 16),
+                itemBuilder: (context, index) => _AdhkarGridCard(
+                  title: listenAndRest['recordedSupplications'][index]['title'],
+                  onTap: () {}, //!TODO: Audio_pop.up
                 ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: _AdhkarGridCard(title: 'أذكار المساء', onTap: () {}),
-                ),
-              ],
+              ),
             ),
 
             const SizedBox(height: 24),
@@ -124,15 +134,18 @@ class _AudioGridCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: 200,
         padding: const EdgeInsets.all(14),
         decoration: Styles.customCardBoxDecoration,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // waveform icon top left
-            Align(alignment: Alignment.centerLeft, child: const Icon(Icons.graphic_eq, color: AppColors.grayColor, size: 22)),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: SvgPicture.asset("assets/icons/audio.svg"),
+            ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: 12), //.paddingBottom(0),
 
             // headphone icon center
             CircleAvatar(
@@ -147,12 +160,11 @@ class _AudioGridCard extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 12),
+            const SizedBox(height: 12), //.paddingBottom(0),
 
             // title
             Text(
               title,
-              textAlign: TextAlign.right,
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w700,
@@ -160,12 +172,11 @@ class _AudioGridCard extends StatelessWidget {
               ),
             ),
 
-            const SizedBox(height: 4),
+            const SizedBox(height: 4), //.paddingBottom(0),
 
             // subtitle
             Text(
               subtitle,
-              textAlign: TextAlign.right,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
@@ -257,6 +268,7 @@ class _AdhkarGridCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: 200,
         padding: const EdgeInsets.all(14),
         decoration: Styles.customCardBoxDecoration,
         child: Column(
@@ -264,8 +276,8 @@ class _AdhkarGridCard extends StatelessWidget {
           children: [
             // waveform icon
             Align(
-              alignment: Alignment.centerLeft,
-              child: const Icon(Icons.graphic_eq, color: AppColors.grayColor, size: 22),
+              alignment: Alignment.bottomCenter,
+              child: SvgPicture.asset("assets/icons/audio.svg"),
             ),
 
             const SizedBox(height: 16),
