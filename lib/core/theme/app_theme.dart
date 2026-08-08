@@ -27,7 +27,7 @@ abstract class AppTheme {
       onPrimary: AppColors.whiteColor, // Header text color
       onSurface: AppColors.blackColor, // Calendar day text color
     ),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
       color: Colors.white,
       elevation: 4.0,
       shadowColor: Colors.black.withValues(alpha: 0.06),
