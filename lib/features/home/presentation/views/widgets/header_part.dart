@@ -20,7 +20,7 @@ class HeaderPart extends StatelessWidget {
           children: [
             Text(
               "${AppText.hello} 👋",
-              style: Styles.textStylebold14(context),
+              style: Styles.textStyleBold14(context),
             ),
             const SizedBox(height: 4),
             Text(
@@ -29,9 +29,8 @@ class HeaderPart extends StatelessWidget {
             ),
           ],
         ),
-
         const Spacer(),
-                Stack(
+        Stack(
           children: [
             const Icon(Icons.notifications_none, size: 28),
             Positioned(
@@ -41,7 +40,7 @@ class HeaderPart extends StatelessWidget {
                 width: 8,
                 height: 8,
                 decoration: const BoxDecoration(
-                  color: ColorApp.primaryColor,
+                  color: AppColors.primaryColor,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -52,4 +51,3 @@ class HeaderPart extends StatelessWidget {
     );
   }
 }
-

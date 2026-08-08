@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lupus_app/core/constants/app_text.dart';
 import 'package:lupus_app/core/constants/asset_icons.dart';
+import 'package:lupus_app/core/services/routes.dart';
 import 'package:lupus_app/core/theme/styles.dart';
 import 'service_item.dart';
 
@@ -18,12 +19,30 @@ class ServicesSection extends StatelessWidget {
       crossAxisCount = 5;
     }
 
-    final services =  [
+    final services = [
       ServiceItem(icon: AssetIcons.brain, title: AppText.serviceAwareness),
       ServiceItem(icon: AssetIcons.medicine, title: AppText.serviceMedicine),
       ServiceItem(icon: AssetIcons.tahalil, title: AppText.serviceTests),
-      ServiceItem(icon: AssetIcons.support, title: AppText.serviceMentalSupport),
-      ServiceItem(icon: AssetIcons.friendsIcon, title: AppText.serviceFriends),
+      ServiceItem(
+        icon: AssetIcons.friendsIcon,
+        title: AppText.serviceFriends,
+        // onTap: () => Navigator.of(context).pushNamed(Routes.communitySupport),
+      ),
+      ServiceItem(
+        icon: AssetIcons.support,
+        title: AppText.serviceMentalSupport,
+        onTap: () => Navigator.of(context).pushNamed(Routes.psychologicalSupport),
+      ),
+      ServiceItem(
+        icon: AssetIcons.support,
+        title: "الجمعيات",
+        onTap: () => Navigator.of(context).pushNamed(Routes.communitySupport),
+      ),
+      ServiceItem(
+        icon: AssetIcons.mosque,
+        title: "ديننا تقوي",
+        onTap: () => Navigator.of(context).pushNamed(Routes.religion),
+      ),
     ];
 
     return Column(
@@ -32,7 +51,7 @@ class ServicesSection extends StatelessWidget {
         /// Title Row
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children:  [
+          children: [
             Text(
               AppText.servicesTitle,
               style: Styles.textStyle14(context).copyWith(color: Colors.black),

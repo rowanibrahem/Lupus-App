@@ -4,7 +4,7 @@ import 'package:lupus_app/core/services/app_router.dart';
 import 'package:lupus_app/core/services/navigation_service.dart';
 import 'package:lupus_app/core/theme/app_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lupus_app/features/splash_screen/presentation/splash_view.dart';
+import 'package:lupus_app/features/home/presentation/views/bottom_nav_bar_view.dart';
 
 class LupusApp extends StatelessWidget {
   const LupusApp({super.key});
@@ -19,9 +19,7 @@ class LupusApp extends StatelessWidget {
         darkTheme: AppTheme.darkTheme,
         themeMode: ThemeMode.light,
         locale: const Locale('ar'),
-        supportedLocales: const [
-          Locale('ar'),
-        ],
+        supportedLocales: const [Locale('ar')],
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -30,7 +28,7 @@ class LupusApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRouter.generateRoute,
         navigatorKey: NavigationService.navigatorKey,
-        home: SplashView(),
+        home: BottomNavBarView(),
       ),
     );
   }

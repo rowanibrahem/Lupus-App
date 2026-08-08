@@ -6,7 +6,6 @@ abstract class AppTheme {
     visualDensity: VisualDensity.adaptivePlatformDensity,
     scaffoldBackgroundColor: AppColors.whiteColor,
     appBarTheme: AppBarTheme(
-      // color: AppColors.whiteColor,
       elevation: 0,
       scrolledUnderElevation: 0,
       centerTitle: true,
@@ -24,49 +23,65 @@ abstract class AppTheme {
       titleSmall: TextStyle(),
     ),
     colorScheme: ColorScheme.light(
-      primary: AppColors.bgColor, // Header background (selected date)
+      primary: AppColors.primaryColor, // Header background (selected date)
       onPrimary: AppColors.whiteColor, // Header text color
-      onSurface: AppColors.primaryColor, // Calendar day text color
+      onSurface: AppColors.blackColor, // Calendar day text color
+    ),
+    cardTheme: CardThemeData(
+      color: Colors.white,
+      elevation: 4.0,
+      shadowColor: Colors.black.withValues(alpha: 0.06),
+      margin: const EdgeInsets.all(10.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16), // ← match your BoxDecoration
+      ),
     ),
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: AppColors.primaryColor,
-      selectionColor: AppColors.primaryColor.withValues(alpha: 0.3),
+      selectionColor: AppColors.primaryColor..withValues(alpha: 0.3),
       selectionHandleColor: AppColors.primaryColor,
     ),
     inputDecorationTheme: InputDecorationTheme(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
       hintStyle: TextStyle(
         color: AppColors.grayColor,
         fontWeight: FontWeight.w600,
         fontSize: 12,
         height: 1.0,
-        letterSpacing: 0.0,
+        letterSpacing: 0.18,
+        textBaseline: TextBaseline.alphabetic,
       ),
-      // filled: true,
-      // fillColor: AppColors.lightGrayColor,
+      filled: true,
+      fillColor: Colors.white,
       prefixIconColor: AppColors.primaryColor,
       suffixIconColor: AppColors.primaryColor,
-
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: AppColors.grayBlue),
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.grey.shade200),
       ),
       enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: AppColors.grayBlue),
+        borderRadius: BorderRadius.circular(14),
+        borderSide: BorderSide(color: Colors.grey.shade200),
       ),
       focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(12),
-        borderSide: const BorderSide(color: AppColors.purple, width: 1.5),
+        borderRadius: BorderRadius.circular(14),
+        borderSide: const BorderSide(color: AppColors.primaryColor),
       ),
-
       disabledBorder: OutlineInputBorder(
-        borderSide: const BorderSide(color: AppColors.grayBlue),
-        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: AppColors.grayColor),
+        borderRadius: BorderRadius.circular(14),
       ),
-
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.errorColor, width: 1.5),
-        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide(color: AppColors.errorColor),
+        borderRadius: BorderRadius.circular(14),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(color: AppColors.primaryColor),
+        backgroundColor: AppColors.whiteColor,
+        foregroundColor: AppColors.primaryColor,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -113,7 +128,6 @@ abstract class AppTheme {
       ),
       textStyle: TextStyle(
         color: AppColors.grayColor,
-
         fontWeight: FontWeight.w500,
         fontSize: 12,
         height: 1.0, // line-height: 100%
@@ -157,7 +171,7 @@ abstract class AppTheme {
 
     textSelectionTheme: TextSelectionThemeData(
       cursorColor: AppColors.purple,
-      selectionColor: AppColors.purple.withValues(alpha: 0.3),
+      selectionColor: AppColors.purple..withValues(alpha: 0.3),
       selectionHandleColor: AppColors.purple,
     ),
 
@@ -199,7 +213,7 @@ abstract class AppTheme {
         backgroundColor: AppColors.purple,
         foregroundColor: AppColors.whiteSoft,
         elevation: 12,
-        shadowColor: const Color(0xFF8B5CF6).withValues(alpha: 0.6),
+        shadowColor: const Color(0xFF8B5CF6)..withValues(alpha: 0.6),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
         ),

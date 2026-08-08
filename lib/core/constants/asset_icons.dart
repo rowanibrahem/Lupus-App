@@ -10,4 +10,7 @@ class AssetIcons {
   static const support = 'assets/icons/support.svg';
   static const medicine = 'assets/icons/medicine.svg';
   static const brain = 'assets/icons/brain.svg';
+  static const mosque = 'assets/icons/mosque.svg';
+
+  // assets/icons/mosque.svg
 }

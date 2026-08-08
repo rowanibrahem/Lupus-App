@@ -2,25 +2,34 @@ name: lupus_app
 description: "A new Flutter project."
 publish_to: 'none'
 
+
 version: 1.0.0+1
 
 environment:
   # sdk: ^3.7.2
   sdk: ^3.6.1
 
+
+
 dependencies:
   country_flags: ^3.2.0
   cupertino_icons: ^1.0.8
+  curved_navigation_bar: ^1.0.6
   dots_indicator: ^4.0.1
+  file_picker: ^11.0.2
   flutter:
     sdk: flutter
+  flutter_chat_types: ^3.6.2
+  flutter_chat_ui: ^1.6.15
   flutter_localization: ^0.3.3
   flutter_localizations:
     sdk: flutter
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.2.0
   google_fonts: ^6.3.0
-  curved_navigation_bar: ^1.0.6
+  image_picker: ^1.2.0
+  open_filex: ^4.7.0
+  uuid: ^4.5.3
 
 dev_dependencies:
   flutter_lints: ^5.0.0
@@ -32,6 +41,12 @@ flutter:
   assets:
     - assets/images/
     - assets/icons/
+    - packages/flutter_chat_ui/assets/icon-attachment.png
+    - packages/flutter_chat_ui/assets/icon-delivered.png
+    - packages/flutter_chat_ui/assets/icon-document.png
+    - packages/flutter_chat_ui/assets/icon-error.png
+    - packages/flutter_chat_ui/assets/icon-seen.png
+    - packages/flutter_chat_ui/assets/icon-send.png
   fonts:
     - family: Changa
       fonts:

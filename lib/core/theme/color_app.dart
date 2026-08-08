@@ -10,7 +10,7 @@ class AppColors {
   static const secondaryColor = Color(0xFF6B7280);
   static const whiteColor = Color(0xFFFFFFFF);
   static const blackColor = Color(0xFF000000);
-  static const grayColor = Color(0xFF7F7F7F);
+  static const grayColor = Color(0xFFACACAC);
   static const lightGrayColor = Color(0xFFEAEAEA);
   static const lighterGrayColor = Color(0xFFD9D9D9);
 
@@ -23,7 +23,7 @@ class AppColors {
 
   static const Color whiteSoft = Color(0xFFF8FAFC);
 
-  static const Color grayBlue = Color(0xFF627188);
+  static const Color grayBlue = Color(0xFFAAA7A7);
   static const Color graySoft = Color(0xFF8C9DB5);
 
   static const Color purple = Color(0xFF8B5CF6);
@@ -31,4 +31,5 @@ class AppColors {
   static const Color tealDark = Color(0xFF0C3C51);
 
   static List<Color> bgGradient = [Color(0xFF0B1220), Color(0xFF111A2E)];
+  static const Color cardBg = Color(0xFFF3F0FA);
 }

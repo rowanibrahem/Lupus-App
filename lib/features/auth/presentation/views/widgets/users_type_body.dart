@@ -16,8 +16,8 @@ class UsersTypeBody extends StatefulWidget {
 class _UsersTypeBodyState extends State<UsersTypeBody> {
   int selectedIndex = -1;
   final List<String> routes = [
-    Routes.patientRegisterStep1,
-    Routes.doctorRegisterStep1,
+    Routes.patientRegister,
+    Routes.doctorRegister,
     Routes.pharmacyRegister,
     Routes.patientMemberRegister,
     Routes.charityRegister,

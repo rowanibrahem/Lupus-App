@@ -36,11 +36,10 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
             index: _currentIndex,
             height: 60,
             backgroundColor: Colors.transparent,
-            color: ColorApp.primaryColor,
-            buttonBackgroundColor: ColorApp.bgColor,
+            color: AppColors.primaryColor,
+            buttonBackgroundColor: AppColors.bgColor,
             animationDuration: const Duration(milliseconds: 300),
-          
-            items:  [
+            items: [
               Icon(Icons.home, color: Colors.white),
               SvgPicture.asset(
                 AssetIcons.support,
@@ -54,7 +53,6 @@ class _BottomNavBarViewState extends State<BottomNavBarView> {
               ),
               Icon(Icons.person, color: Colors.white),
             ],
-            
             onTap: (index) {
               setState(() {
                 _currentIndex = index;

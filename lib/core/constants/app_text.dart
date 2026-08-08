@@ -100,15 +100,9 @@ class AppText {
   static const addLinkOrUpload = 'أضف رابط أو ارفع الملفات';
   static const alreadyHaveAccountPrompt = 'عندك حساب بالفعل؟ ';
   static const loginNow = 'سجّل دخول';
-  static const chooseAccountSubText =
-      'قولنا إنت مين علشان نقدر نساعدك بطريقتنا الخاصة';
-  static const forgetPasswordTitle = 'هل نسيت كلمة المرور ؟';
-  static const personalInfo = 'المعلومات الشخصية';
-  static const medicalInfo = 'المعلومات الطبية';
   static const hello = 'مرحبا ';
   static const beFine = 'نتمني انك تكون بخير ';
 
-  
   static const learnTitle = 'تعلم عن الذئبة';
   static const viewAll = 'عرض الكل';
   static const learnText1 = 'مرض الذئبة بيؤثر على الجهاز المناعي وقد يسبب التهابات في الجسم.';
@@ -125,9 +119,29 @@ class AppText {
   static const serviceTests = 'تحاليل';
   static const serviceMentalSupport = 'الدعم النفسي';
   static const serviceFriends = 'صحبة';
+
+//? CommunitySupport----------------------------------------------
+  static const communitySupport = 'الجمعيات والدعم المجتمعي';
+  static const searchForAssociationOrActivity = 'ابحث عن جمعية أو نشاط...';
+
+  static const String recommendedAssociations = 'جمعيات موصى بها';
+  static const String learnMore = 'اعرف المزيد';
+  static const String availableServices = 'الخدمات المتاحة';
+  static const String contactMethods = 'طرق التواصل';
+  static const String navigateToActivitiesAndCases = 'الانتقال للأنشطة والحالات المحتاجة';
+  static const String activitiesAndNeededCases = 'الأنشطة والحالات المحتاجة';
+
+ static const String patienceVerse =
+    '﴿وَبَشِّرِ الصَّابِرِينَ ۝ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ '
+    'قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ﴾';
 }
 
 /*
+ // !TODO:AppText
+//  !TODO:AppStyles
 
+
+
+//.paddingBottom(0),
 
  */

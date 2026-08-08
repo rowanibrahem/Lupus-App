@@ -9,4 +9,5 @@ abstract class AssetImages {
   static const String eyeIcon = "assets/icons/eye.svg";
   static const String copyLink = "assets/icons/copy_link.svg";
   static const String arrowLeft = "assets/icons/arrow_left.svg";
+  static const String awarenessRibbon = "assets/images/awareness_ribbon.png";
 }
